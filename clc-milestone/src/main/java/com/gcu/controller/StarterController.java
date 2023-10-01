@@ -14,7 +14,7 @@ public class StarterController{
 
     @RequestMapping("/home")
 	public String printAct(Model model) {
-		model.addAttribute("message", "Welcome To Our Health Services");
+		model.addAttribute("title", "Welcome To Our Health Services");
 		return "starter";
 	}
 
