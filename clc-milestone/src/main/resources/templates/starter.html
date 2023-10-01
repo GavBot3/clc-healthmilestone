@@ -6,14 +6,19 @@ xmlns:th="https://www.thymeleaf.org"
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Starter</title>
+
+    <!-- Bootstrap css file -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"/>
 </head>
 <body>
     <!-- This is a welcome page with our company name and two button-->
     
     <h2 th:text="${message}">default</h2><br/>
+    
 	<a th:href="@{/login}">Login</a><br/>
     <a th:href="@{/register}">Register</a><br/>
-
+    <button type="button" class="btn btn-primary btn-lg"><a th:href="@{/login}">Login</a><br/>/button>
+    <button type="button" class="btn btn-secondary btn-lg"><a th:href="@{/register}">Register</a><br/></button>
 
 
 

@@ -9,12 +9,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 @Controller
-@RequestMapping("/home")
+@RequestMapping("/")
 public class StarterController{
 
-    @RequestMapping("/")
+    @RequestMapping("/home")
 	public String printAct(Model model) {
-		model.addAttribute("message", "Welcome To Our HEalth Services");
+		model.addAttribute("message", "Welcome To Our Health Services");
 		return "starter";
 	}
 

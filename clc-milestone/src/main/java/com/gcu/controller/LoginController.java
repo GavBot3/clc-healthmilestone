@@ -14,7 +14,7 @@ import org.springframework.web.servlet.ModelAndView;
 import com.gcu.model.LoginModel;
 
 @Controller
-@RequestMapping("/login")
+@RequestMapping("/")
 public class LoginController {
 
 	@GetMapping("/login")
