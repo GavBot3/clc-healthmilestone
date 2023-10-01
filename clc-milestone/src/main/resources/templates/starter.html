@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en"
+xmlns:th="https://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Starter</title>
+</head>
+<body>
+    <!-- This is a welcome page with our company name and two button-->
+    
+    <h2 th:text="${message}">default</h2><br/>
+	<a th:href="@{/login}">Login</a><br/>
+    <a th:href="@{/register}">Register</a><br/>
+
+
+
+
+
+</body>
+</html>
