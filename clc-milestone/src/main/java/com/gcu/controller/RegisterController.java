@@ -3,11 +3,15 @@ package com.gcu.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.gcu.model.RegisterModel;;
+import com.gcu.model.LoginModel;
+import com.gcu.model.RegisterModel;
+
+import jakarta.validation.Valid;;
 
 @Controller // This class is annotated as a Spring MVC controller
 @RequestMapping("/") // All mappings in this controller start with "/"
@@ -25,6 +29,13 @@ public class RegisterController {
 		mv.addObject(model); // Add the Model object to the ModelAndView
 		mv.setViewName("register"); // Set the view name to "register" (a reference to a JSP or Thymeleaf template)
 		return mv; // Return the ModelAndView object
+	}
+
+	@RequestMapping("/registersubmit")
+	public String doLogin(@Valid LoginModel loginModel, BindingResult bindingResult, Model model) {
+	
+	
+		return "register";
 	}
 
 }
