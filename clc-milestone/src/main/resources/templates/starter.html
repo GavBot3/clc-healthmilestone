@@ -22,10 +22,11 @@ xmlns:th="https://www.thymeleaf.org"
                     <!-- Logo for our website(still workin on name), adjusted for size-->
                     <img th:src="@{/images/kahler35_cartoon_doctor_tools_to_form_a_logo_for_a_health_care__61b72957-aaeb-4948-b2de-ada80fbddc71.png}" alt="Company Logo" width="300" height="300"/><br/><br/>
                 </div>
-                <!-- Dire-->
+                <!-- Directions -->
                 <h3 align="center">If you are a returning customer pleae login. If you are new, please register.</h3>
             </div>
             <div align="center">
+                <!-- Use form tags to give my buttons  -->
                 <form th:action="@{/login}" method="get">
                     <button type="submit" class="btn btn-success" >  Login </button>
                 </form>
