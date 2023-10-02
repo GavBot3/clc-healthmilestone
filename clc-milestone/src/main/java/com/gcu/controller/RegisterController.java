@@ -32,7 +32,7 @@ public class RegisterController {
 	}
 
 	@RequestMapping("/registersubmit")
-	public String doLogin(@Valid LoginModel loginModel, BindingResult bindingResult, Model model) {
+	public String doLogin(@Valid RegisterModel registerModel, BindingResult bindingResult, Model model) {
 	
 	
 		return "register";
