@@ -26,7 +26,8 @@ xmlns:th="https://www.thymeleaf.org"
                 <h3 align="center">If you are a returning customer pleae login. If you are new, please register.</h3>
             </div>
             <div align="center">
-                <!-- Use form tags to give my buttons  -->
+                <!-- Use form tags to give my buttons control
+                Use thymleaf action to call a controller based on which button is pressed -->
                 <form th:action="@{/login}" method="get">
                     <button type="submit" class="btn btn-success" >  Login </button>
                 </form>
