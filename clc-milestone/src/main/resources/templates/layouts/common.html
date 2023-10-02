@@ -7,28 +7,33 @@
 <body>
 	<div th:fragment="header">
 		
+    <!-- Start of the bootstrap nav bar -->
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
             <div class="container-fluid">
-              <!--<!-- <img class="navbar-brand" src="/images/kahler35_cartoon_doctor_tools_to_form_a_logo_for_a_health_care__61b72957-aaeb-4948-b2de-ada80fbddc71.-->png"> -->
               <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
               </button>
               <div class="collapse navbar-collapse" id="navbarNavDropdown">
                 <ul class="navbar-nav">
+                  <!-- Home page -->
                   <li class="nav-item">
                     <a class="nav-link active" aria-current="page" th:href="@{/home}">Home</a>
                   </li>
+                  <!-- Medic ne page--i>
                   <li class="nav-item">
                     <a class="nav-link" href="#">Medicine</a>
                   </li>
+                  <!-- Scheduling page -->
                   <li class="nav-item">
                     <a class="nav-link" href="#">Schedule</a>
                   </li>
+                  <!-- Donation page -->
                   <li class="nav-item">
                     <a class="nav-link" href="#">Donate</a>
                   </li>
                
                 </ul>
+                <!-- Search bar in the nav bar -->
                    <div class="container-fluid">
                   <form class="d-flex">
                     <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">

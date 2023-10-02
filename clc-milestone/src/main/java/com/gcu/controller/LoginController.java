@@ -1,3 +1,4 @@
+// Import necessary Java libraries and Spring Framework classes
 package com.gcu.controller;
 
 import java.util.ArrayList;
@@ -13,20 +14,22 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.gcu.model.LoginModel;
 
-@Controller
-@RequestMapping("/")
+@Controller // This class is annotated as a Spring MVC controller
+@RequestMapping("/") // All mappings in this controller start with "/"
 public class LoginController {
 
+	// Handle HTTP GET requests to "/login" URL
 	@GetMapping("/login")
 	public ModelAndView display(Model model) {
 		ModelAndView mv = new ModelAndView();
 
-		model.addAttribute("title", "Login Form");
-		model.addAttribute("loginModel", new LoginModel());
+		// Add attributes to the Spring Model object
+		model.addAttribute("title", "Login Form"); // Add a "title" attribute with the value "Login Form"
+		model.addAttribute("loginModel", new LoginModel()); // Add a "loginModel" attribute with a new instance of LoginModel
 
-		mv.addObject(model);
-		mv.setViewName("login");
-		return mv;
+		mv.addObject(model); // Add the Model object to the ModelAndView
+		mv.setViewName("login"); // Set the view name to "login" (a reference to a JSP or Thymeleaf template)
+		return mv; // Return the ModelAndView object
 	}
 
 }
