@@ -14,16 +14,16 @@ xmlns:th="https://www.thymeleaf.org"
     <div align="center">
         <section layout:fragment="content">
             <div>
-                <h1>Welcome to blanks health services</h1>
-                <img th:src="@{/images/kahler35_cartoon_doctor_tools_to_form_a_logo_for_a_health_care__61b72957-aaeb-4948-b2de-ada80fbddc71.png}" alt="Company Logo" width="300" height="169"/><br/><br/>
-                <h3>If you are a returning customer pleae login. If you are new, please register.</h3>
+                <h1 align="center">Welcome to blanks health services</h1>
+                <img th:src="@{/images/kahler35_cartoon_doctor_tools_to_form_a_logo_for_a_health_care__61b72957-aaeb-4948-b2de-ada80fbddc71.png}" alt="Company Logo" width="300" height="300" align="center"/><br/><br/>
+                <h3 align="center">If you are a returning customer pleae login. If you are new, please register.</h3>
             </div>
             <div align="center">
                 <form th:action="@{/login}" method="get">
-                    <button type="button" class="btn btn-success" >Login</button>
+                    <button type="submit" class="btn btn-success" >  Login </button>
                 </form>
                 <form th:action="@{/register}" method="get">
-                    <button type="button" class="btn btn-success" >Register</button>
+                    <button type="submit" class="btn btn-success" >Register</button>
                 </form>
                 
              </div>
