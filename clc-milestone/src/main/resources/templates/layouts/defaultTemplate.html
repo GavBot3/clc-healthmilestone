@@ -11,12 +11,13 @@
 </head>
 <body>
 	<div>
-		<!-- Head -->
+		<!-- Header -->
 		<div th:replace="layouts/common :: header">My Header</div>
+		<!-- This is where the body of the content will go -->
 		<section layout:fragment="content">
 			<p>My Body Contents</p>
 		</section>
-
+		<!-- Footer -->
 		<div th:replace="layouts/common :: footer">My footer</div>
 	</div>
 </body>

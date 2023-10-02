@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.gcu.model.LoginModel;
+import jakarta.validation.Valid;
 
 @Controller // This class is annotated as a Spring MVC controller
 @RequestMapping("/") // All mappings in this controller start with "/"
@@ -30,6 +31,13 @@ public class LoginController {
 		mv.addObject(model); // Add the Model object to the ModelAndView
 		mv.setViewName("login"); // Set the view name to "login" (a reference to a JSP or Thymeleaf template)
 		return mv; // Return the ModelAndView object
+	}
+
+	@RequestMapping("/loginsubmit")
+	public String doLogin(@Valid LoginModel loginModel, BindingResult bindingResult, Model model) {
+	
+	
+		return "loginsubmit";
 	}
 
 }
