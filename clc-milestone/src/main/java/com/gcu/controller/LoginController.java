@@ -37,7 +37,7 @@ public class LoginController {
 	public String doLogin(@Valid LoginModel loginModel, BindingResult bindingResult, Model model) {
 	
 	
-		return "loginsubmit";
+		return "login";
 	}
 
 }
