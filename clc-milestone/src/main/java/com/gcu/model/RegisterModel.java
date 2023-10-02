@@ -19,7 +19,7 @@ public class RegisterModel {
     // Define validation constraints for the phone number field
     @NotNull(message = "Phone number is a required field") // Phone number must not be null
     @Size(min = 10, max = 10, message = "Phone number must be exactly 10 characters") // Phone number must be exactly 10 characters in length
-    private int phoneNumber;
+    private String phoneNumber;
     
     // Define validation constraints for the email field
     @NotNull(message = "Email is a required field") // Email must not be null
