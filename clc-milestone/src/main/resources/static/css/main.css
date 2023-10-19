@@ -1,0 +1,16 @@
+.mb-3 {
+	width: 100%;
+}
+
+.align{
+	display: flex;
+    justify-content: center;
+}
+
+.login-form{
+	width: 25%;
+}
+
+.nav-search{
+	justify-content: flex-end;
+}
