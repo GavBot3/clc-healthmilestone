@@ -19,6 +19,7 @@ public class SpringConfig {
 
 	@Bean(name="MedicineServiceInterface")
 	public MedicineServiceInterface getMedicineBusiness() {
+		//medicine service
 		return new MedicineService();
 	}
 
