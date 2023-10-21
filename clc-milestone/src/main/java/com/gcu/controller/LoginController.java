@@ -33,11 +33,16 @@ public class LoginController {
 		return mv; // Return the ModelAndView object
 	}
 
-	@RequestMapping("/loginsubmit")
+	@PostMapping("/loginsubmit")
 	public String doLogin(@Valid LoginModel loginModel, BindingResult bindingResult, Model model) {
 	
+		
+		if(bindingResult.hasErrors()) {
+			model.addAttribute("title", "Login Form");
+			return "login";
+		}
 	
-		return "login";
+		return "dashboard";
 	}
 
 }

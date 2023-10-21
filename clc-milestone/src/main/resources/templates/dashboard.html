@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="layouts/defaultTemplate">
+
+<head>
+<meta charset="UTF-8">
+<title>Dashboard</title>
+<!-- Include Bootstrap 5 CSS -->
+<link
+	href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+	rel="stylesheet" />
+	<link th:href="@{/css/dashboard.css}" rel="stylesheet" />
+</head>
+
+<body>
+	<!-- Define the main content of the page -->
+	<div layout:fragment="content" class="container">
+        <div class="row">
+            <!-- Left Side: Two Lists -->
+            <div class="col-md-6">
+                <div class="box">
+                    <h2>Medicines</h2>
+                    <ul>
+                        <li>Item 1</li>
+                        <li>Item 2</li>
+                        <li>Item 3</li>
+                    </ul>
+                </div>
+                <div class="box">
+                    <h2>Organs Donated</h2>
+                    <ul>
+                        <li>Item A</li>
+                        <li>Item B</li>
+                        <li>Item C</li>
+                    </ul>
+                </div>
+            </div>
+    
+            <!-- Right Side: Calendar -->
+            <div class="col-md-6">
+                <div class="box">
+                    <h2>Calendar</h2>
+                    <div class="calendar">
+                        <div class="calendar-header">Sunday</div>
+                        <div class="calendar-header">Monday</div>
+                        <div class="calendar-header">Tuesday</div>
+                        <div class="calendar-header">Wednesday</div>
+                        <div class="calendar-header">Thursday</div>
+                        <div class="calendar-header">Friday</div>
+                        <div class="calendar-header">Saturday</div>
+                        
+                        <!-- Calendar Days (You may need to generate these dynamically based on the current month) -->
+                        <div class="day weekend">26</div>
+                        <div class="day">27</div>
+                        <div class="day">28</div>
+                        <div class="day">29</div>
+                        <div class="day">30</div>
+                        <div class="day">1</div>
+                        <div class="day today">2</div>
+                        <!-- Add more days as needed -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

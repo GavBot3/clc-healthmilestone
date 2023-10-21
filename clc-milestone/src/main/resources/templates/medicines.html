@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="layouts/defaultTemplate">
+
+<head>
+<meta charset="UTF-8">
+<title>Medicines</title>
+<!-- Include Bootstrap 5 CSS -->
+<links
+	href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+	rel="stylesheet" />
+</head>
+
+<body>
+	<!-- Define the main content of the page -->
+	<div layout:fragment="content" >
+        <table class="table">
+            <thead>
+              <tr>
+                <th scope="col">#</th>
+                <th scope="col">Name</th>
+                <th scope="col">Type</th>
+                <th scope="col">Strength</th>
+                <th scope="col">Quantity</th>
+              </tr>
+            </thead>
+            <tbody>
+                <tr th:if="${medicines.empty}">
+					<td style="text-align: center" colspan="4">No Orders Available</td>
+				</tr>
+                <tr th:each="medicine : ${medicines}">
+                    <th scope="row">1</th>
+					<td style="text-align: center"><h5 th:text="${medicine.name}">Name</h5></td>
+					<td style="text-align: center"><h5
+							th:text="${medicine.type}">Type</h5></td>
+					<td style="text-align: center"><h5 th:text="${medicine.strength}">1.00</h5></td>
+					<td style="text-align: center"><h5 th:text="${medicine.quantity}">1</h5></td>
+				</tr>
+            </tbody>
+          </table>
+
+	</div>
+</body>
+</html>

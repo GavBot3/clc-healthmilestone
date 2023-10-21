@@ -35,7 +35,7 @@ public class RegisterController {
 	public String doLogin(@Valid RegisterModel registerModel, BindingResult bindingResult, Model model) {
 	
 	
-		return "register";
+		return "dashboard";
 	}
 
 }
