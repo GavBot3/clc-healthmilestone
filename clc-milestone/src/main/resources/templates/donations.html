@@ -12,12 +12,53 @@
 </head>
 
 <body>
-	<div layout:fragment="content">
+<div layout:fragment="content">
 
-		<h1>Text </h1>
-		<!-- Footer -->
+	<form action="#" th:action="@{/donationsubmit}" th:object="${donationsModel}"
+			method="post">
 
-	</div>
+            <h1 align="center">Donate</h1>
+            <br>
+			<table align="center" >
+				<tr>
+					<td>First Name:</td>
+					<td><input type="text" th:field="*{firstName}"></td>
+					<td><h5 style="color: red"
+							th:if="${#fields.hasErrors('firstName')}" th:errors="*{username}">First
+							Name Error</h5></td>
+				</tr>
+				<tr>
+					<td>Last Name:</td>
+					<td><input type="text" th:field="*{lastName}"></td>
+					<td><h5 style="color: red"
+							th:if="${#fields.hasErrors('lastName')}" th:errors="*{password}">Last Name
+							Error</h5></td>
+				</tr>
+                <tr>
+					<td>Organ that is being donated:</td>
+					<td><input type="text" th:field="*{organ}"></td>
+					<td><h5 style="color: red"
+							th:if="${#fields.hasErrors('organ')}" th:errors="*{organ}">Organ Error</h5></td>
+				</tr>
+				<tr>
+					<td>Email Address:</td>
+					<td><input type="text" th:field="*{email}"></td>
+					<td><h5 style="color: red"
+							th:if="${#fields.hasErrors('email')}" th:errors="*{email}">Email
+							Error</h5></td>
+				</tr>
+				<tr>
+					<td colspan="3"><input class="btn btn-success" type="submit" value="Submit"></td>
+				</tr>
+			</table>
+			<div th:if="${#fields.hasErrors('*')}">List of Errors</div>
+			<div th:each="err : ${#fields.errors('*')}">
+				<span style="color: red" th:text="${err}" class="fieldError"></span>
+			</div>
+		</form>
+		
+
+</div>
 </body>
 
 </html>
