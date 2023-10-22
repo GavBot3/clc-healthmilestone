@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping("/") // All mappings in this controller start with "/"
 public class DonationsController {
     
-    @GetMapping("/donations")
+    @RequestMapping("/donations")
     public String getDonations(Model model){
     	model.addAttribute("title", "Donations");
         return "donations";
