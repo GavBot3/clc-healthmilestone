@@ -12,7 +12,6 @@ public class DonationsController {
     @GetMapping("/donations")
     public String getDonations(Model model){
     	model.addAttribute("title", "Donations");
-    	model.addAttribute("donations", "DONATION");
         return "donations";
     }
 	//public ModelAndView display(Model model) {
