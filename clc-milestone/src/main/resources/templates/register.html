@@ -11,48 +11,48 @@
 </head>
 <body>
 	<div layout:fragment="content">
-		<form class="login-form" action="#" th:action="@{/registersubmit}" th:object="${registerModel}"
+		<form action="#" th:action="@{/registersubmit}" th:object="${registerModel}"
 			method="post">
 
             <h1 align="center">Register</h1>
 			<table align="center">
 				<tr>
 					<td>First Name:</td>
-					<td><input type="text" class="form-control" th:field="*{firstName}"></td>
+					<td><input type="text" th:field="*{firstName}"></td>
 					<td><h5 style="color: red"
 							th:if="${#fields.hasErrors('firstName')}" th:errors="*{username}">First
 							Name Error</h5></td>
 				</tr>
 				<tr>
 					<td>Last Name:</td>
-					<td><input type="text" class="form-control" th:field="*{lastName}"></td>
+					<td><input type="text" th:field="*{lastName}"></td>
 					<td><h5 style="color: red"
 							th:if="${#fields.hasErrors('lastName')}" th:errors="*{password}">Last Name
 							Error</h5></td>
 				</tr>
                 <tr>
 					<td>Phone Number numbers only:</td>
-					<td><input type="text" class="form-control" th:field="*{phoneNumber}"></td>
+					<td><input type="text" th:field="*{phoneNumber}"></td>
 					<td><h5 style="color: red"
 							th:if="${#fields.hasErrors('phoneNumber')}" th:errors="*{phoneNumber}">Phone Number Error</h5></td>
 				</tr>
 				<tr>
 					<td>Email Address:</td>
-					<td><input type="text" class="form-control" th:field="*{email}"></td>
+					<td><input type="text" th:field="*{email}"></td>
 					<td><h5 style="color: red"
 							th:if="${#fields.hasErrors('email')}" th:errors="*{email}">Email
 							Error</h5></td>
 				</tr>
                 <tr>
 					<td>User Name:</td>
-					<td><input type="text" class="form-control" th:field="*{username}"></td>
+					<td><input type="text" th:field="*{username}"></td>
 					<td><h5 style="color: red"
 							th:if="${#fields.hasErrors('username')}" th:errors="*{username}">User
 							Name Error</h5></td>
 				</tr>
 				<tr>
 					<td>Password:</td>
-					<td><input type="password"  class="form-control" th:field="*{password}"></td>
+					<td><input type="password" th:field="*{password}"></td>
 					<td><h5 style="color: red"
 							th:if="${#fields.hasErrors('password')}" th:errors="*{password}">Password
 							Error</h5></td>
@@ -61,8 +61,8 @@
 					<td colspan="3"><input class="btn btn-success" type="submit" value="Submit"></td>
 				</tr>
 			</table>
-			<div align="center" th:if="${#fields.hasErrors('*')}">List of Errors</div>
-			<div align="center" th:each="err : ${#fields.errors('*')}">
+			<div th:if="${#fields.hasErrors('*')}">List of Errors</div>
+			<div th:each="err : ${#fields.errors('*')}">
 				<span style="color: red" th:text="${err}" class="fieldError"></span>
 			</div>
 		</form>
