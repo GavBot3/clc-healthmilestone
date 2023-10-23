@@ -41,6 +41,10 @@ public class RegisterController {
 	@RequestMapping("/registersubmit")
 	public String doLogin(@Valid RegisterModel registerModel, BindingResult bindingResult, Model model) {
 	
+		if(bindingResult.hasErrors()) {
+			model.addAttribute("title", "Login Form");
+			return "register";
+		}
 	
 		return "dashboard";
 	}

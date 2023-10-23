@@ -9,6 +9,7 @@ import org.springframework.web.context.annotation.SessionScope;
 
 import com.gcu.business.MedicineService;
 import com.gcu.business.MedicineServiceInterface;
+import com.gcu.model.DonationsModel;
 import com.gcu.model.LoginModel;
 import com.gcu.model.RegisterModel;
 
@@ -33,6 +34,11 @@ public class SpringConfig {
     @Bean
     public RegisterModel registerModel() {
         return new RegisterModel();
+    }
+
+	@Bean
+    public DonationsModel donationsModel() {
+        return new DonationsModel();
     }
 
 }

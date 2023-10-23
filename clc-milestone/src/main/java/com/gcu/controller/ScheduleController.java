@@ -11,7 +11,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 @Controller // This class is annotated as a Spring MVC controller
 @RequestMapping("/") // All mappings in this controller start with "/"
-public class Schedule {
+public class ScheduleController {
 
     // Handle HTTP GET requests to "/home" URL
     @RequestMapping("/schedule")
