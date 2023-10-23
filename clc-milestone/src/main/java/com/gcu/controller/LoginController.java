@@ -4,7 +4,6 @@ package com.gcu.controller;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -19,12 +18,6 @@ import jakarta.validation.Valid;
 @Controller // This class is annotated as a Spring MVC controller
 @RequestMapping("/") // All mappings in this controller start with "/"
 public class LoginController {
-	private LoginModel loginModel; // Injected LoginModel bean
-
-    @Autowired
-    public LoginController(LoginModel loginModel) {
-        this.loginModel = loginModel;
-    }
 
 	// Handle HTTP GET requests to "/login" URL
 	@GetMapping("/login")
@@ -33,7 +26,7 @@ public class LoginController {
 
 		// Add attributes to the Spring Model object
 		model.addAttribute("title", "Login Form"); // Add a "title" attribute with the value "Login Form"
-		model.addAttribute("loginModel", loginModel); // Add a "loginModel" attribute with a new instance of LoginModel
+		model.addAttribute("loginModel", new LoginModel()); // Add a "loginModel" attribute with a new instance of LoginModel
 
 		mv.addObject(model); // Add the Model object to the ModelAndView
 		mv.setViewName("login"); // Set the view name to "login" (a reference to a JSP or Thymeleaf template)

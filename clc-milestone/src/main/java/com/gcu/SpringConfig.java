@@ -9,8 +9,6 @@ import org.springframework.web.context.annotation.SessionScope;
 
 import com.gcu.business.MedicineService;
 import com.gcu.business.MedicineServiceInterface;
-import com.gcu.model.LoginModel;
-import com.gcu.model.RegisterModel;
 
 @Configuration
 public class SpringConfig {
@@ -24,15 +22,5 @@ public class SpringConfig {
 		//medicine service
 		return new MedicineService();
 	}
-	
-	@Bean
-    public LoginModel loginModel() {
-        return new LoginModel();
-    }
-	
-    @Bean
-    public RegisterModel registerModel() {
-        return new RegisterModel();
-    }
 
 }
