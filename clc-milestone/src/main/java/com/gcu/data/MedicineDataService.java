@@ -11,7 +11,7 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.rowset.SqlRowSet;
 
 
-
+@Service
 public class MedicineDataService<T> implements DataAccessInterface<MedicineModel>{
 
     @Autowired

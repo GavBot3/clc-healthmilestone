@@ -23,7 +23,7 @@ public class UserService implements UserServiceInterface{
 
 	@Override
 	public void init() {
-		// TODO iunitalize
+		
 		throw new UnsupportedOperationException("Unimplemented method 'init'");
 	}
 
