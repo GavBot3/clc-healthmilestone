@@ -20,20 +20,15 @@
             <h1 align="center">Donate</h1>
             <br>
 			<table align="center" >
+				
 				<tr>
-					<td>First Name:</td>
-					<td><input type="text" th:field="*{firstName}"></td>
+					<td>Id:</td>
+					<td><input type="text" th:field="*{ID}"></td>
 					<td><h5 style="color: red"
-							th:if="${#fields.hasErrors('firstName')}" th:errors="*{username}">First
-							Name Error</h5></td>
+							th:if="${#fields.hasErrors('ID')}" th:errors="*{ID}">ID
+							 Error</h5></td>
 				</tr>
-				<tr>
-					<td>Last Name:</td>
-					<td><input type="text" th:field="*{lastName}"></td>
-					<td><h5 style="color: red"
-							th:if="${#fields.hasErrors('lastName')}" th:errors="*{password}">Last Name
-							Error</h5></td>
-				</tr>
+				
                 <tr>
 					<td>Organ that is being donated:</td>
 					<td><input type="text" th:field="*{organ}"></td>
@@ -41,10 +36,17 @@
 							th:if="${#fields.hasErrors('organ')}" th:errors="*{organ}">Organ Error</h5></td>
 				</tr>
 				<tr>
-					<td>Email Address:</td>
-					<td><input type="text" th:field="*{email}"></td>
+					<td>DonationDate(2023-03-15 00:00:00 format):</td>
+					<td><input type="text" th:field="*{donation_date}"></td>
 					<td><h5 style="color: red"
-							th:if="${#fields.hasErrors('email')}" th:errors="*{email}">Email
+							th:if="${#fields.hasErrors('donation_date')}" th:errors="*{donation_date}">donation_date
+							Error</h5></td>
+				</tr>
+				<tr>
+					<td>User_ID:</td>
+					<td><input type="text" th:field="*{user_ID}"></td>
+					<td><h5 style="color: red"
+							th:if="${#fields.hasErrors('user_ID')}" th:errors="*{user_ID}">user_ID
 							Error</h5></td>
 				</tr>
 				<tr>
