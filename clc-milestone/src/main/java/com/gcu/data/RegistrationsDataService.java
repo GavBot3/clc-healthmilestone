@@ -19,6 +19,7 @@ public class RegistrationsDataService implements DataAccessInterface<RegisterMod
 
 	@Autowired
 	private DataSource dataSource;
+	@Autowired
 	private JdbcTemplate jdbcTemplateObject;
 	
 	

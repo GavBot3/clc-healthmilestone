@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
-
+import com.gcu.business.UserService;
 import com.gcu.model.RegisterModel;
 
 import jakarta.validation.Valid;;
@@ -17,6 +17,7 @@ import jakarta.validation.Valid;;
 public class RegisterController {
 
     private final RegisterModel registerModel; // Injected RegisterModel bean
+	private UserService service;
 
     
     public RegisterController(RegisterModel registerModel) {
@@ -45,6 +46,7 @@ public class RegisterController {
 		}
 
 		//TODO: Create new user with vaild info
+		service.createUser(registerModel);
 	
 		return "dashboard";
 	}
