@@ -31,14 +31,14 @@ public class DonationsController {
 
     @RequestMapping("/donations")
     public String getDonations(Model model){
-		//ModelAndView mv = new ModelAndView();
+		ModelAndView mv = new ModelAndView();
 
 		// Add attributes to the Spring Model object
 		model.addAttribute("title", "Donations"); // Add a "title" attribute with the value "Register Form"
-		model.addAttribute("donationsModel", service.getDonations()); // Add a "registerModel" attribute with a new instance of RegisterModel
+		model.addAttribute("donationsModel", new DonationsModel()); // Add a "registerModel" attribute with a new instance of RegisterModel
 
-		//mv.addObject(model); // Add the Model object to the ModelAndView
-		//mv.setViewName("donations"); // Set the view name to "register" (a reference to a JSP or Thymeleaf template)
+		mv.addObject(model); // Add the Model object to the ModelAndView
+		mv.setViewName("donations"); // Set the view name to "register" (a reference to a JSP or Thymeleaf template)
 		return "donations"; // Return the ModelAndView object
     	
     }
