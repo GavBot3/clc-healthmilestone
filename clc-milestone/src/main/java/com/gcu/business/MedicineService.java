@@ -11,9 +11,10 @@ import com.gcu.data.*;
 
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 
-
+@Service
 public class MedicineService implements MedicineServiceInterface{
 
     @Autowired

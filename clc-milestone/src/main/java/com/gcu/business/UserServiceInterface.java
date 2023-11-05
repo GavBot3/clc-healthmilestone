@@ -9,6 +9,6 @@ public interface UserServiceInterface {
     public void init();
 	public void destroy();
 	public List<RegisterModel> getUsers();
-    public boolean createUser();
+    public boolean createUser(RegisterModel model);
 	
 }
