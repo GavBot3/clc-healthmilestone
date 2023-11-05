@@ -1,6 +1,7 @@
 package com.gcu.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -12,6 +13,7 @@ import org.springframework.ui.Model;
 @RequestMapping("/") // All mappings in this controller start with "/"
 public class MedicineController {
     @Autowired
+    @Qualifier("MedicineServiceInterface")
     private MedicineServiceInterface service;
 
     @RequestMapping("/medicines")
