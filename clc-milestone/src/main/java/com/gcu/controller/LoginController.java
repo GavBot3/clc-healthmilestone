@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.gcu.business.SecurityBusinessService;
 import com.gcu.model.LoginModel;
 import jakarta.validation.Valid;
 
@@ -20,7 +21,9 @@ import jakarta.validation.Valid;
 @RequestMapping("/") // All mappings in this controller start with "/"
 public class LoginController {
 	private LoginModel loginModel; // Injected LoginModel bean
-
+	@Autowired
+	private SecurityBusinessService security;
+	
     @Autowired
     public LoginController(LoginModel loginModel) {
         this.loginModel = loginModel;
@@ -43,12 +46,13 @@ public class LoginController {
 	@PostMapping("/loginsubmit")
 	public String doLogin(@Valid LoginModel loginModel, BindingResult bindingResult, Model model) {
 	
-		
+		boolean vaildUser = security.authenticate(loginModel.getUsername(), loginModel.getPassword());
 		if(bindingResult.hasErrors()) {
 			model.addAttribute("title", "Login Form");
 			return "login";
 		}
 	
+		
 		return "dashboard";
 	}
 

@@ -4,19 +4,43 @@ import java.util.List;
 
 import com.gcu.model.MedicineModel;
 
+import jakarta.annotation.PostConstruct;
+import jakarta.annotation.PreDestroy;
+
+import com.gcu.data.*;
+
+
+import org.springframework.beans.factory.annotation.Autowired;
+
 
 
 public class MedicineService implements MedicineServiceInterface{
 
+    @Autowired
+	public DataAccessInterface<MedicineModel> service;
+
+   
     @Override
     public List<MedicineModel> getMedicines()
     {
-        List<MedicineModel> medicines = new ArrayList<MedicineModel>();
-        medicines.add(new MedicineModel("Ibuprophen", "NSAID", "600mg", 100, 50));
-        medicines.add(new MedicineModel("Percocet", "Acetaminophen", "10mg", 20, 20));
-        medicines.add(new MedicineModel("Adderall", "Dextroamphetamine-amphetamine", "20g", 60, 30));
-        medicines.add(new MedicineModel("Peneciline", "Antibiotic", "250mg", 90, 45));
-        return medicines;
+        return service.findAll();
     }
+
+    
+	@Override
+	@PostConstruct
+	public void init() {
+		// TODO Auto-generated method stub
+		System.out.println("Initialize Medicine Service");
+
+	}
+
+
+	@Override
+	@PreDestroy
+	public void destroy() {
+		// TODO Auto-generated method stub
+		System.out.println("Destroy Medicine Service");
+	}
 
 }

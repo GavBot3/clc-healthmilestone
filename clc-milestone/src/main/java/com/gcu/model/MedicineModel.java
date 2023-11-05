@@ -5,14 +5,16 @@ import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlRootElement;
 @JacksonXmlRootElement
 public class MedicineModel {
 
+	public long id;
 	public String name;
 	public String type;
 	public String strength;
 	public int quantity;
 	public int numServings;
 
-	public MedicineModel(String name, String type, String strength, int quantity, int numServings) {
+	public MedicineModel(long id, String name, String type, String strength, int quantity, int numServings) {
 		// TODO Auto-generated constructor stub
+		this.id = id;
 		this.name = name;
 		this.type = type;
 		this.strength = strength;

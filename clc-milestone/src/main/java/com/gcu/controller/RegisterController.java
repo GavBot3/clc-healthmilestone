@@ -1,7 +1,5 @@
 // Import necessary Java libraries and Spring Framework classes
 package com.gcu.controller;
-
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -9,7 +7,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.gcu.model.LoginModel;
+
 import com.gcu.model.RegisterModel;
 
 import jakarta.validation.Valid;;
@@ -20,7 +18,7 @@ public class RegisterController {
 
     private final RegisterModel registerModel; // Injected RegisterModel bean
 
-    @Autowired
+    
     public RegisterController(RegisterModel registerModel) {
         this.registerModel = registerModel;
     }
@@ -42,9 +40,11 @@ public class RegisterController {
 	public String doLogin(@Valid RegisterModel registerModel, BindingResult bindingResult, Model model) {
 	
 		if(bindingResult.hasErrors()) {
-			model.addAttribute("title", "Login Form");
+			model.addAttribute("title", "Register From");
 			return "register";
 		}
+
+		//TODO: Create new user with vaild info
 	
 		return "dashboard";
 	}

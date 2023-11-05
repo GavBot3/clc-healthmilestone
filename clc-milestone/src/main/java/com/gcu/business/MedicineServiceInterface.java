@@ -6,6 +6,7 @@ import com.gcu.model.MedicineModel;
 
 public interface MedicineServiceInterface{
 
-
+	public void init();
+	public void destroy();
     public List<MedicineModel> getMedicines();
 }

@@ -6,6 +6,10 @@ import jakarta.validation.constraints.Size;
 // A Java class representing the model for the registration form
 public class RegisterModel {
     
+    
+    
+    private int ID;
+
     // Define validation constraints for the first name field
     @NotNull(message = "First name is a required field") // First name must not be null
     @Size(min = 1, max = 32, message = "First name must be between 1 and 32 characters") // First name must be between 1 and 32 characters in length
@@ -35,6 +39,20 @@ public class RegisterModel {
     @NotNull(message = "Password is a required field") // Password must not be null
     @Size(min = 1, max = 32, message = "Password must be between 1 and 32 characters") // Password must be between 1 and 32 characters in length
     private String password;
+
+    public RegisterModel(int id, String firstname, String lastname, String phonenum, String email, String username, String password){
+        this.ID = id;
+        this.firstName = firstname;
+        this.lastName = lastname;
+        this.phoneNumber = phonenum;
+        this.email = email;
+        this.username = username;
+        this.password = password;
+    }
+
+    public RegisterModel(){
+        
+    }
 
     // Getter and setter methods for firstName
     public String getFirstName() {
