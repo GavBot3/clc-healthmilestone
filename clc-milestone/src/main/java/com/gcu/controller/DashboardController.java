@@ -17,6 +17,7 @@ public class DashboardController {
     @RequestMapping("/dashboard")
     public String printAct(Model model) {
         model.addAttribute("title", "Welcome To Our Health Services"); // Add a "title" attribute with a welcome message
+        //call method to view
         return "dashboard"; // Return the name of the view, in this case, "starter" (a reference to a JSP or Thymeleaf template)
     }
 

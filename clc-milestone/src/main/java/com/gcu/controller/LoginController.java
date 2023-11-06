@@ -48,7 +48,9 @@ public class LoginController {
 	
 		boolean validUser = security.authenticate(loginModel.getUsername(), loginModel.getPassword());
 		System.out.println(validUser);
-		if(validUser) {
+		if(validUser) 
+		{
+			
 			return "dashboard";
 		}
 		if(bindingResult.hasErrors()) {
@@ -57,7 +59,7 @@ public class LoginController {
 		}
 	
 		
-		return "register";
+		return "starter";
 	}
 
 }
