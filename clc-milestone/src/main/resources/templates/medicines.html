@@ -15,7 +15,7 @@
 <body>
 	<!-- Define the main content of the page -->
 	<div layout:fragment="content" >
-      <table class="table" sytle="width: 50%">
+      <table class="table table-hover table-striped" >
         <thead>
           <tr>
             <th scope="col" style="text-align: center">#</th>
@@ -30,7 +30,7 @@
 					  <td style="text-align: center" colspan="4">No Orders Available</td>
 				  </tr>
           <tr th:each="medicine : ${medicines}">
-            <th scope="row">1</th>
+            <th scope="row" th:text="${medicine.id}">1</th>
 					    <td style="text-align: center"><h5 th:text="${medicine.name}">Name</h5></td>
 					    <td style="text-align: center">
                 <h5 th:text="${medicine.type}">Type</h5>

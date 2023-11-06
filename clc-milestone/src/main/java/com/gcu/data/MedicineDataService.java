@@ -28,14 +28,14 @@ public class MedicineDataService<T> implements DataAccessInterface<MedicineModel
     public List<MedicineModel> findAll()
     {
         List<MedicineModel> medicines = new ArrayList<MedicineModel>();
-        String sql = "SELECT * FROM ORDERS";
+        String sql = "SELECT * FROM medicines";
 
 		try {
 			SqlRowSet srs = jdbcTemplateObject.queryForRowSet(sql);
 			while(srs.next()) {
 				medicines.add(new MedicineModel(srs.getLong("ID"), srs.getString("name"),
 						srs.getString("type"), srs.getString("strength"),
-						srs.getInt("QUANTITY"), srs.getInt("num_servings")));
+						srs.getInt("quantity"), srs.getInt("num_servings")));
 			}
 		
 		}

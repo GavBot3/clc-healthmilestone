@@ -14,6 +14,7 @@ import com.gcu.business.MedicineServiceInterface;
 import com.gcu.model.DonationsModel;
 import com.gcu.model.LoginModel;
 import com.gcu.model.RegisterModel;
+import com.gcu.business.*;
 
 @Configuration
 public class SpringConfig {
@@ -27,6 +28,15 @@ public class SpringConfig {
 		//medicine service
 		return new MedicineService();
 	}
+	
+	@Bean(name="UserServiceInterface")
+	public UserServiceInterface getUserBusiness() {
+		//medicine service
+		return new UserService();
+	}
+	
+
+	
 	
 	@Bean
     public LoginModel loginModel() {
