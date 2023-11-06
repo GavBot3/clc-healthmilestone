@@ -42,7 +42,7 @@ public class RegistrationsDataService implements DataAccessInterface<RegisterMod
 	public boolean create(RegisterModel t) {
 		// TODO Auto-generated method stub
 		//Create sql statement
-		String sql = "INSERT INTO users(first_name,last_name,phone_number, email, username, passowrd) VALUES (?,?,?, ?, ?, ?)";
+		String sql = "INSERT INTO users(first_name,last_name,phone_number, email, username, password) VALUES (?,?,?,?,?,?)";
 		try {
 			int rows = jdbcTemplateObject.update(sql, 
 										t.getFirstName(),
@@ -56,7 +56,7 @@ public class RegistrationsDataService implements DataAccessInterface<RegisterMod
 
 
 
-
+			System.out.println(t.getFirstName());
 		return rows == 1 ? true : false;
 		}catch(Exception e) {
 			e.printStackTrace();

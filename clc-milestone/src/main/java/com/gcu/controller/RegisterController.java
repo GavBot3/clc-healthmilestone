@@ -1,5 +1,6 @@
 // Import necessary Java libraries and Spring Framework classes
 package com.gcu.controller;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -16,7 +17,9 @@ import jakarta.validation.Valid;;
 @RequestMapping("/") // All mappings in this controller start with "/"
 public class RegisterController {
 
-    private final RegisterModel registerModel; // Injected RegisterModel bean
+    
+	private final RegisterModel registerModel; // Injected RegisterModel bean
+	@Autowired
 	private UserService service;
 
     
@@ -46,9 +49,13 @@ public class RegisterController {
 		}
 
 		//TODO: Create new user with vaild info
-		service.createUser(registerModel);
+		if(service.createUser(registerModel)) {
+			System.out.println("TRUE");
+			return "dashboard";
+		}
+		
 	
-		return "dashboard";
+		return "register";
 	}
 
 }

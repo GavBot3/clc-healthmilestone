@@ -46,14 +46,18 @@ public class LoginController {
 	@PostMapping("/loginsubmit")
 	public String doLogin(@Valid LoginModel loginModel, BindingResult bindingResult, Model model) {
 	
-		boolean vaildUser = security.authenticate(loginModel.getUsername(), loginModel.getPassword());
+		boolean validUser = security.authenticate(loginModel.getUsername(), loginModel.getPassword());
+		System.out.println(validUser);
+		if(validUser) {
+			return "dashboard";
+		}
 		if(bindingResult.hasErrors()) {
 			model.addAttribute("title", "Login Form");
 			return "login";
 		}
 	
 		
-		return "dashboard";
+		return "register";
 	}
 
 }

@@ -20,7 +20,7 @@ public class SecurityBusinessService {
         List<RegisterModel>  users = new ArrayList<RegisterModel>();
         users = service.findAll();
         for(RegisterModel user : users){
-            if(username == user.getUsername() && password == user.getPassword()){
+            if(username.equals(user.getUsername()) && password.equals(user.getPassword())){
                 return true;
             }
         }
