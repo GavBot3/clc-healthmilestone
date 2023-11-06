@@ -46,7 +46,7 @@ public class DonationsController {
 	@RequestMapping("/donationsubmit")
 	public String doLogin(@Valid DonationsModel donationsModel, BindingResult bindingResult, Model model) {
 		
-		
+		System.out.println(donationsModel.getOrgan());
 		if(service.createDonation(donationsModel)) {
 			
 			return "dashboard";

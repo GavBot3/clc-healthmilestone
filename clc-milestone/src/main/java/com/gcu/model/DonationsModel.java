@@ -1,12 +1,13 @@
 package com.gcu.model;
 
+import jakarta.validation.constraints.Max;
+import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 
 public class DonationsModel {
-   // @NotNull(message = "ID is a required field") // First name must not be null
-    //@Size(min = 1, max = 32, message = "ID must be and int") // First name must be between 1 and 32 characters in length
-    private int ID;
+
+    private Integer ID;
     
     @NotNull(message = "Organ is a required field") // Last name must not be null
     @Size(min = 1, max = 32, message = "Organ must be between 1 and 32 characters") // Last name must be between 1 and 32 characters in length
@@ -17,8 +18,9 @@ public class DonationsModel {
     private String donation_date;
     
     
-    @NotNull(message = "UserID is a required field") // Email must not be null
-    @Size(min = 1, max = 32, message = "UserID must be an int") // Email must be between 1 and 32 characters in length
+    @NotNull(message = "User ID is a required field")
+    @Min(value = 1, message = "User ID must be at least 1")
+    @Max(value = 4, message = "User ID must be at most 2147483647") // Adjust the maximum value as needed
     private int user_ID;
 
     public DonationsModel() {
