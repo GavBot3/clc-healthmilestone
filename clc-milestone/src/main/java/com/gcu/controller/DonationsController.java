@@ -53,6 +53,30 @@ public class DonationsController {
 		}
 		return "starter";
 	}
+	
+    @RequestMapping("/deleteDonation")
+    public String showDeleteDonationPage(Model model) {
+        // Add the donationsModel attribute to the model
+		ModelAndView mv = new ModelAndView();
 
+		// Add attributes to the Spring Model object
+		model.addAttribute("title", "deleteDonation"); // Add a "title" attribute with the value "Register Form"
+		model.addAttribute("donationsModel", new DonationsModel()); // Add a "registerModel" attribute with a new instance of RegisterModel
+
+		mv.addObject(model); // Add the Model object to the ModelAndView
+		mv.setViewName("deleteDonation"); // Set the view name to "register" (a reference to a JSP or Thymeleaf template)
+		return "deleteDonation"; // Return the ModelAndView object
+    }
+
+	@RequestMapping("/donationDeleteSubmit")
+	public String doDelete(@Valid DonationsModel donationsModel, BindingResult bindingResult, Model model) {
+		
+		System.out.println(donationsModel.getID());
+		if(service.deleteDonation(donationsModel)) {
+			
+			return "dashboard";
+		}
+		return "starter";
+	}
 }
 

@@ -37,4 +37,17 @@ public class DonationsService implements DonationsServiceInterface{
 		return false;
 	}
 
+	@Override
+	public boolean deleteDonation(DonationsModel dm) {
+		// TODO Auto-generated method stub
+		try{
+			service.delete(dm);
+			return true;
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+		return false;
+		
+	}
+
 }

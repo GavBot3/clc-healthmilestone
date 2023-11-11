@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="layouts/defaultTemplate">
+
+<head>
+	<meta charset="UTF-8">
+	<title>deleteDonation</title>
+	<!-- Include Bootstrap 5 CSS -->
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" 
+	rel="stylesheet" />
+</head>
+
+<body>
+<div layout:fragment="content">
+
+	<form action="#" th:action="@{/donationDeleteSubmit}" th:object="${donationsModel}"
+			method="post">
+
+            <h1 align="center">Delete Donation</h1>
+            <br>
+			<table align="center" >
+				<!--
+				<tr>
+					<td>Id:</td>
+					<td><input type="text" th:field="*{ID}"></td>
+					<td><h5 style="color: red"
+							th:if="${#fields.hasErrors('ID')}" th:errors="*{ID}">ID
+							 Error</h5></td>
+				</tr>
+				-->
+
+
+				<tr>
+					<td>Donation_ID:</td>
+					<td><input type="text" th:field="*{ID}"></td>
+					<td><h5 style="color: red"
+							th:if="${#fields.hasErrors('ID')}" th:errors="*{ID}">Donation ID
+							Error</h5></td>
+				</tr>
+				<tr>
+					<td colspan="3"><input class="btn btn-success" type="submit" value="Delete"></td>
+				</tr>
+			</table>
+			<div th:if="${#fields.hasErrors('*')}">List of Errors</div>
+			<div th:each="err : ${#fields.errors('*')}">
+				<span style="color: red" th:text="${err}" class="fieldError"></span>
+			</div>
+		</form>
+		
+
+		
+
+</div>
+</body>
+
+</html>

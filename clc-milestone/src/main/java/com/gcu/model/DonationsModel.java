@@ -7,7 +7,7 @@ import jakarta.validation.constraints.Size;
 
 public class DonationsModel {
 
-    private Integer ID;
+    private int ID;
     
     @NotNull(message = "Organ is a required field") // Last name must not be null
     @Size(min = 1, max = 32, message = "Organ must be between 1 and 32 characters") // Last name must be between 1 and 32 characters in length

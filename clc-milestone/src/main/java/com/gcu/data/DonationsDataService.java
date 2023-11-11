@@ -85,6 +85,14 @@ public class DonationsDataService implements DataAccessInterface<DonationsModel>
     @Override
     public boolean delete(DonationsModel t) {
         // TODO Auto-generated method stub
+    	String sql = "DELETE FROM donations WHERE ID = ?";
+    	try {
+    		int rows = jdbcTemplateObject.update(sql, t.getID());
+    		System.out.println(rows);
+    		return rows == 1 ? true : false;
+    	}catch(Exception e) {
+    		e.printStackTrace();
+    	}
         return false;
     }
 }
