@@ -1,0 +1,8 @@
+@charset "UTF-8";
+.center-box {
+			margin: 0 auto;
+			width: 75%;
+			padding: 20px;
+			border: 1px solid #ccc;
+			border-radius: 10px;
+		}

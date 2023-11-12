@@ -50,4 +50,16 @@ public class DonationsService implements DonationsServiceInterface{
 		
 	}
 
+	@Override
+	public boolean updateDonation(DonationsModel dm) {
+		// TODO Auto-generated method stub
+		try{
+			service.update(dm);
+			return true;
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+		return false;
+	}
+
 }

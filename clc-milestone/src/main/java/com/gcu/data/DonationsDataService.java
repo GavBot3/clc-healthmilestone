@@ -65,7 +65,7 @@ public class DonationsDataService implements DataAccessInterface<DonationsModel>
             int rows = jdbcTemplateObject.update(sql,
                     t.getOrgan(),
                     t.getDonation_date(),
-                    t.getuser_ID());
+                    t.getUser_ID());
             return rows == 1 ? true : false;
         } catch (Exception e) {
             e.printStackTrace();
@@ -78,6 +78,14 @@ public class DonationsDataService implements DataAccessInterface<DonationsModel>
     @Override
     public boolean update(DonationsModel t) {
         // TODO Auto-generated method stub
+    	String sql = "UPDATE `donations` SET `ID`=?,`organ`= ?,`donation_date`= ?,`user_ID`= ? WHERE 1";
+    	try {
+    		int rows = jdbcTemplateObject.update(sql, t.getID(), t.getOrgan(), t.getDonation_date(), t.getUser_ID());
+    		System.out.println(rows);
+    		return rows == 1 ? true : false;
+    	}catch(Exception e) {
+    		e.printStackTrace();
+    	}
         return false;
     }
 

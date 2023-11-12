@@ -1,5 +1,7 @@
 package com.gcu.controller;
 
+import java.util.ArrayList;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
@@ -78,5 +80,36 @@ public class DonationsController {
 		}
 		return "starter";
 	}
+	
+	
+	@RequestMapping("/updateDonation")
+	public String showUpdateDonationPage(Model model) {
+		 // Add the donationsModel attribute to the model
+		//ModelAndView mv = new ModelAndView();
+
+		// Add attributes to the Spring Model object
+		model.addAttribute("title", "updateDonation"); // Add a "title" attribute with the value "Register Form"
+		model.addAttribute("donationsModel", new DonationsModel()); // Add a "registerModel" attribute with a new instance of RegisterModel
+		model.addAttribute("donationList", service.getDonations());
+		
+
+		
+		//mv.addObject(model); // Add the Model object to the ModelAndView
+		//mv.setViewName("updateDonation"); // Set the view name to "register" (a reference to a JSP or Thymeleaf template)
+		return "updateDonation"; // Return the ModelAndView object
+	}
+	
+	@RequestMapping("/updateDonationSubmit")
+	public String doUpdate(@Valid DonationsModel donationsModel, BindingResult bindingResult, Model model) {
+		
+		//System.out.println(donationsModel.getID());
+		if(service.updateDonation(donationsModel)) {
+			
+			return "dashboard";
+		}
+		return "starter";
+	}
+	
+	
 }
 

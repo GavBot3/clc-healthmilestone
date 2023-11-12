@@ -9,4 +9,5 @@ public interface DonationsServiceInterface {
 	public List<DonationsModel> getDonations();
 	public boolean createDonation(DonationsModel dm);
 	public boolean deleteDonation(DonationsModel dm);
+	public boolean updateDonation(DonationsModel dm);
 }

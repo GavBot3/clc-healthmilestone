@@ -66,12 +66,12 @@ public class DonationsModel {
 	}
 
 
-	public int getuser_ID() {
+	public int getUser_ID() {
 		return user_ID;
 	}
 
 
-	public void setuser_ID(int userID) {
+	public void setUser_ID(int userID) {
 		user_ID = userID;
 	}
 
