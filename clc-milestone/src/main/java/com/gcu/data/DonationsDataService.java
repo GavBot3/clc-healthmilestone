@@ -78,9 +78,9 @@ public class DonationsDataService implements DataAccessInterface<DonationsModel>
     @Override
     public boolean update(DonationsModel t) {
         // TODO Auto-generated method stub
-    	String sql = "UPDATE `donations` SET `ID`=?,`organ`= ?,`donation_date`= ?,`user_ID`= ? WHERE 1";
+    	String sql = "UPDATE `donations` SET `organ`= ?,`donation_date`= ?,`user_ID`= ? WHERE `ID` = ?";
     	try {
-    		int rows = jdbcTemplateObject.update(sql, t.getID(), t.getOrgan(), t.getDonation_date(), t.getUser_ID());
+    		int rows = jdbcTemplateObject.update(sql, t.getOrgan(), t.getDonation_date(), t.getUser_ID(), t.getID());
     		System.out.println(rows);
     		return rows == 1 ? true : false;
     	}catch(Exception e) {
