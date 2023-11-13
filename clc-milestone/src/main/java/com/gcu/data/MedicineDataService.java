@@ -65,7 +65,12 @@ public class MedicineDataService<T> implements DataAccessInterface<MedicineModel
         String sql = "INSERT INTO medicines(name, type, strength, quantity, num_servings) VALUES(?,?,?,?,?)";
         try {
             // Execute the SQL statement and insert medicine data
-            int rows = jdbcTemplateObject.update(sql, medicine.getName(), medicine.getType(), medicine.getStrength(), medicine.getQuantity(), medicine.getNumServings());
+            int rows = jdbcTemplateObject.update(sql, 
+            medicine.getName(), 
+            medicine.getType(), 
+            medicine.getStrength(), 
+            medicine.getQuantity(), 
+            medicine.getNumServings());
             return rows == 1 ? true : false;
         } catch (Exception e) {
             e.printStackTrace();

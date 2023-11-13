@@ -89,7 +89,7 @@ public class DonationsDataService implements DataAccessInterface<DonationsModel>
         return false;
     }
 
-    // Delete a donation (Not yet implemented)
+    // Delete a donation 
     @Override
     public boolean delete(DonationsModel t) {
         // TODO Auto-generated method stub

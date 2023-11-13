@@ -26,9 +26,9 @@ public class DonationsModel {
     public DonationsModel() {
     	
     }
-	public DonationsModel(int id, String organ, String donation_date, int user_id) {
+	public DonationsModel(int ID, String organ, String donation_date, int user_id) {
 		// TODO Auto-generated constructor stub
-		this.ID = id;
+		this.ID = ID;
 		this.organ = organ;
 		this.donation_date = donation_date;
 		this.user_ID = user_id;
@@ -41,8 +41,8 @@ public class DonationsModel {
 	}
 
 
-	public void setID(int iD) {
-		ID = iD;
+	public void setID(int ID) {
+		this.ID = ID;
 	}
 
 
