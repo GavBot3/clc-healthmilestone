@@ -9,11 +9,13 @@ import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.gcu.business.DonationsServiceInterface;
-import com.gcu.business.MedicineServiceInterface;
+import com.gcu.business.DonationsService;
+
+import com.gcu.business.*;
 import com.gcu.data.DataAccessInterface;
 import com.gcu.data.DonationsDataService;
 import com.gcu.model.DonationsModel;
@@ -47,10 +49,11 @@ public class DonationsController {
     
 	@RequestMapping("/donationsubmit")
 	public String doLogin(@Valid DonationsModel donationsModel, BindingResult bindingResult, Model model) {
-		
+	
 		System.out.println(donationsModel.getOrgan());
 		if(service.createDonation(donationsModel)) {
-			
+			model.addAttribute("donations", service.getDonations());
+
 			return "dashboard";
 		}
 		return "starter";
@@ -75,7 +78,8 @@ public class DonationsController {
 		
 		System.out.println(donationsModel.getID());
 		if(service.deleteDonation(donationsModel)) {
-			
+			model.addAttribute("donations", service.getDonations());
+
 			return "dashboard";
 		}
 		return "starter";
@@ -104,7 +108,8 @@ public class DonationsController {
 		
 		//System.out.println(donationsModel.getID());
 		if(service.updateDonation(donationsModel)) {
-			
+			model.addAttribute("donations", service.getDonations());
+
 			return "dashboard";
 		}
 		return "starter";

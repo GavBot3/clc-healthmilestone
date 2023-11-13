@@ -1,5 +1,6 @@
 package com.gcu.business;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,17 +18,16 @@ public class DonationsService implements DonationsServiceInterface{
 	@Autowired
 	DataAccessInterface<DonationsModel> service;
 	
-	@Override
+
 	public List<DonationsModel> getDonations() {
-		// TODO Auto-generated method stub
-		List<DonationsModel> orders = service.findAll();
-		return orders;
+		
+		return service.findAll();
 		
 	}
 
-	@Override
+
 	public boolean createDonation(DonationsModel dm) {
-		// TODO Auto-generated method stub
+
 		try{
 			service.create(dm);
 			return true;
@@ -37,9 +37,9 @@ public class DonationsService implements DonationsServiceInterface{
 		return false;
 	}
 
-	@Override
+
 	public boolean deleteDonation(DonationsModel dm) {
-		// TODO Auto-generated method stub
+
 		try{
 			service.delete(dm);
 			return true;
@@ -50,9 +50,8 @@ public class DonationsService implements DonationsServiceInterface{
 		
 	}
 
-	@Override
+
 	public boolean updateDonation(DonationsModel dm) {
-		// TODO Auto-generated method stub
 		try{
 			service.update(dm);
 			return true;

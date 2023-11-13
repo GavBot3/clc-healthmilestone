@@ -2,13 +2,13 @@ package com.gcu;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Primary;
 import org.springframework.context.annotation.Scope;
 import org.springframework.context.annotation.ScopedProxyMode;
 import org.springframework.web.context.annotation.RequestScope;
 import org.springframework.web.context.annotation.SessionScope;
 
 import com.gcu.business.DonationsService;
-import com.gcu.business.DonationsServiceInterface;
 import com.gcu.business.MedicineService;
 import com.gcu.business.MedicineServiceInterface;
 import com.gcu.model.DonationsModel;
@@ -47,7 +47,7 @@ public class SpringConfig {
     public RegisterModel registerModel() {
         return new RegisterModel();
     }
-
+	@Primary
 	@Bean(name="DonationsServiceInterface")
     public DonationsServiceInterface getDonationsBusiness() {
         return new DonationsService();

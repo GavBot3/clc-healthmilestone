@@ -13,6 +13,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.gcu.business.DonationsService;
+import com.gcu.business.DonationsServiceInterface;
 import com.gcu.business.SecurityBusinessService;
 import com.gcu.model.LoginModel;
 import jakarta.validation.Valid;
@@ -23,6 +25,8 @@ public class LoginController {
 	private LoginModel loginModel; // Injected LoginModel bean
 	@Autowired
 	private SecurityBusinessService security;
+	@Autowired
+    private DonationsService service;
 	
     @Autowired
     public LoginController(LoginModel loginModel) {
@@ -50,7 +54,7 @@ public class LoginController {
 		System.out.println(validUser);
 		if(validUser) 
 		{
-			
+			model.addAttribute("donations", service.getDonations());
 			return "dashboard";
 		}
 		if(bindingResult.hasErrors()) {

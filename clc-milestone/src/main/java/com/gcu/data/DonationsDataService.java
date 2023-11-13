@@ -28,7 +28,7 @@ public class DonationsDataService implements DataAccessInterface<DonationsModel>
     // Retrieve a list of all donations
     @Override
     public List<DonationsModel> findAll() {
-        String sql = "SELECT * FROM DONATIONS";
+        String sql = "SELECT * FROM donations";
         List<DonationsModel> donations = new ArrayList<DonationsModel>();
         try {
             // Execute the SQL query and retrieve a result set
