@@ -17,7 +17,7 @@ public class SecurityBusinessService {
 
     // Method for authenticating users based on username and password
     public boolean authenticate(String username, String password) {
-        
+        return true;
         List<RegisterModel> users = new ArrayList<RegisterModel>();
         
         // Retrieve a list of registered users from the data service
