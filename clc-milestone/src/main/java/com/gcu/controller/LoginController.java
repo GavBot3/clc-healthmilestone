@@ -51,10 +51,10 @@ public class LoginController {
 	@PostMapping("/loginsubmit")
 	public String doLogin(@Valid LoginModel loginModel, BindingResult bindingResult, Model model) {
 	
-		boolean validUser = security.authenticate(loginModel.getUsername(), loginModel.getPassword());
-		System.out.println(validUser);
 		System.out.println("Username: " + loginModel.getUsername());
 		System.out.println("Password: " + loginModel.getPassword());
+		boolean validUser = security.authenticate(loginModel.getUsername(), loginModel.getPassword());
+		System.out.println(validUser);
 
 		if(validUser) 
 		{

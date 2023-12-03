@@ -71,6 +71,7 @@ public class SecurityConfig {
 	
 	@Autowired
 	public void configure (AuthenticationManagerBuilder auth) throws Exception {
+		System.out.println("Configuring authentication manager");
 		PasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
 		auth.userDetailsService(service).passwordEncoder(passwordEncoder);
 		
