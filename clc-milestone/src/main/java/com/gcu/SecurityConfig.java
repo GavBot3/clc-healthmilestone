@@ -82,7 +82,7 @@ public class SecurityConfig {
 		//auth.userDetailsService(service).passwordEncoder(passwordEncoder);
 		auth.jdbcAuthentication()
         .dataSource(datasource)
-        .usersByUsernameQuery("select username, password FROM users WHERE username =?")
+        .usersByUsernameQuery("select username, password, 1 as enabled FROM users WHERE username =?")
         .passwordEncoder(passwordEncoder);
 		
 	}
