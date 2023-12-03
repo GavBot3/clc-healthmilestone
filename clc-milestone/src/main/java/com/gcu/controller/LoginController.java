@@ -34,40 +34,52 @@ public class LoginController {
         this.loginModel = loginModel;
     }
 
-	// Handle HTTP GET requests to "/login" URL
 	@GetMapping("/login")
-	public ModelAndView display(Model model) {
-		ModelAndView mv = new ModelAndView();
+	public String display(Model model) {
+		//ModelAndView mv = new ModelAndView();
 
-		// Add attributes to the Spring Model object
-		model.addAttribute("title", "Login Form"); // Add a "title" attribute with the value "Login Form"
-		model.addAttribute("loginModel", loginModel); // Add a "loginModel" attribute with a new instance of LoginModel
+		model.addAttribute("title", "Login Form");
+		//model.addAttribute("loginModel", new LoginModel());
 
-		mv.addObject(model); // Add the Model object to the ModelAndView
-		mv.setViewName("login"); // Set the view name to "login" (a reference to a JSP or Thymeleaf template)
-		return mv; // Return the ModelAndView object
+		//mv.addObject(model);
+		//mv.setViewName("login");
+		return "login";
 	}
 
-	@PostMapping("/loginsubmit")
-	public String doLogin(@Valid LoginModel loginModel, BindingResult bindingResult, Model model) {
-	
-		System.out.println("Username: " + loginModel.getUsername());
-		System.out.println("Password: " + loginModel.getPassword());
-		boolean validUser = security.authenticate(loginModel.getUsername(), loginModel.getPassword());
-		System.out.println(validUser);
+	// Handle HTTP GET requests to "/login" URL
+	// @GetMapping("/login")
+	// public ModelAndView display(Model model) {
+	// 	ModelAndView mv = new ModelAndView();
 
-		if(true) 
-		{
-			model.addAttribute("donations", service.getDonations());
-			return "dashboard";
-		}
-		if(bindingResult.hasErrors()) {
-			model.addAttribute("title", "Login Form");
-			return "login";
-		}
+	// 	// Add attributes to the Spring Model object
+	// 	model.addAttribute("title", "Login Form"); // Add a "title" attribute with the value "Login Form"
+	// 	model.addAttribute("loginModel", loginModel); // Add a "loginModel" attribute with a new instance of LoginModel
+
+	// 	mv.addObject(model); // Add the Model object to the ModelAndView
+	// 	mv.setViewName("login"); // Set the view name to "login" (a reference to a JSP or Thymeleaf template)
+	// 	return mv; // Return the ModelAndView object
+	// }
+
+	// @PostMapping("/loginsubmit")
+	// public String doLogin(@Valid LoginModel loginModel, BindingResult bindingResult, Model model) {
+	
+	// 	System.out.println("Username: " + loginModel.getUsername());
+	// 	System.out.println("Password: " + loginModel.getPassword());
+	// 	boolean validUser = security.authenticate(loginModel.getUsername(), loginModel.getPassword());
+	// 	System.out.println(validUser);
+
+	// 	if(true) 
+	// 	{
+	// 		model.addAttribute("donations", service.getDonations());
+	// 		return "dashboard";
+	// 	}
+	// 	if(bindingResult.hasErrors()) {
+	// 		model.addAttribute("title", "Login Form");
+	// 		return "login";
+	// 	}
 	
 		
-		return "starter";
-	}
+	// 	return "starter";
+	// }
 
 }

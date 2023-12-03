@@ -16,7 +16,10 @@
 <body>
 	<!-- Define the main content of the page -->
 	<div layout:fragment="content" class="align">
-		<form  class="login-form" action="#" th:action="@{/loginsubmit}" method="post">
+		<div th:if="${param.error}">
+			Invaild Username or Password
+		</div>
+		<form  class="login-form" action="#" th:action="@{/login}" method="post">
 			<h1 align="center">Login</h1>
 			<div class="mb-3">
 				<label for="username" class="form-label">Email
