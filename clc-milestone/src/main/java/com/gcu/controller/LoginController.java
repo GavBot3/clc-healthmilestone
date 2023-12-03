@@ -53,6 +53,9 @@ public class LoginController {
 	
 		boolean validUser = security.authenticate(loginModel.getUsername(), loginModel.getPassword());
 		System.out.println(validUser);
+		System.out.println("Username: " + loginModel.getUsername());
+		System.out.println("Password: " + loginModel.getPassword());
+
 		if(validUser) 
 		{
 			model.addAttribute("donations", service.getDonations());
