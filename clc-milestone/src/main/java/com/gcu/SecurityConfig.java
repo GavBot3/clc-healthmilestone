@@ -52,7 +52,7 @@ public class SecurityConfig {
 				http
 			.csrf(csrf -> csrf.disable())
 			.authorizeHttpRequests(auth -> auth
-					.requestMatchers("/", "/images/**", "/service/**", "/home", "/login", "/register/**" ).permitAll()
+					.requestMatchers("/", "/images/**", "/service/**", "/home", "/login", "/register/**", "/loginsubmit", "/registersubmit" ).permitAll()
 					.anyRequest().authenticated())
 			.formLogin(form -> form
 				.loginPage("/login")
