@@ -16,17 +16,11 @@
 <body>
 	<!-- Define the main content of the page -->
 	<div layout:fragment="content" class="align">
-		<form class="login-form" action="#" th:action="@{/loginsubmit}" th:object="${loginModel}"
-			method="post"> 
+		<form action="#" th:action="@{/loginsubmit}" method="post">
 			<h1 align="center">Login</h1>
 			<div class="mb-3">
 				<label for="exampleInputEmail1" class="form-label">Email
 					address</label> <input type="text" name="username" id="username" placeholder="Username" required>
-					
-				<div class="form-text">
-					<h5 style="color: red" th:if="${#fields.hasErrors('username')}"
-						th:errors="*{username}">User Name Error</h5>
-				</div>
 			</div>
 			<div class="mb-3">
 				<label for="exampleInputPassword1" class="form-label">Password</label>
@@ -34,16 +28,9 @@
 			</div>
 
 			<input type="submit" value="Sign In">
-			<div class="mb-3">
-				<label th:if="${#fields.hasErrors('*')}">List of Errors</label>
-				<!-- Iterate through and display individual field errors -->
-				<div th:each="err : ${#fields.errors('*')}">
-					<span style="color: red" th:text="${err}" class="fieldError"></span>
-				</div>
-			</div>
 
 		</form>
-
+ 
 	</div>
 </body>
 </html>
