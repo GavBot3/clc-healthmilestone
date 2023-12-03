@@ -6,6 +6,7 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 import javax.sql.DataSource;
+
 import com.gcu.model.LoginModel;
 
 @Service
@@ -15,7 +16,8 @@ public class UserDataAccess implements DataAccessInterface<LoginModel>{
 	private DataSource dataSource;
 	private JdbcTemplate jdbcTemplateObject;
 	
-	
+	@Autowired
+	UserRepository service;
 	
 	public UserDataAccess(DataSource dataSource) {
 		this.dataSource = dataSource;
@@ -29,6 +31,8 @@ public class UserDataAccess implements DataAccessInterface<LoginModel>{
 		// TODO Auto-generated method stub
 		throw new UnsupportedOperationException("Unimplemented method 'findAll'");
 	}
+	
+	
 
 
 
@@ -37,10 +41,6 @@ public class UserDataAccess implements DataAccessInterface<LoginModel>{
 		// TODO Auto-generated method stub
 		throw new UnsupportedOperationException("Unimplemented method 'findByID'");
 	}
-
-	// public UserEntity findByUsername(String username){
-
-	// }
 
 
 
@@ -64,6 +64,13 @@ public class UserDataAccess implements DataAccessInterface<LoginModel>{
 	public boolean delete(LoginModel t) {
 		// TODO Auto-generated method stub
 		throw new UnsupportedOperationException("Unimplemented method 'delete'");
+	}
+
+
+
+	public UserEntity findByUsername(String username) {
+		
+		return service.findByUsername(username);
 	}
 
 }

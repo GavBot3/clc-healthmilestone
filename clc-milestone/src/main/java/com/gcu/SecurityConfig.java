@@ -71,20 +71,11 @@ public class SecurityConfig {
 		return http.build();	
 	}
 	
-@Bean
-    public DaoAuthenticationProvider authenticationProvider() {
-        DaoAuthenticationProvider authProvider = new DaoAuthenticationProvider();
-        authProvider.setUserDetailsService(service);
-        authProvider.setPasswordEncoder(passwordEncoder);
-        return authProvider;
-    }
 
 	@Autowired
 	public void configure (AuthenticationManagerBuilder auth) throws Exception {
 		System.out.println("Configuring authentication manager");
-		auth.userDetailsService(service).passwordEncoder(passwordEncoder)
-		.and()
-		.authenticationProvider(authenticationProvider());
+		auth.userDetailsService(service).passwordEncoder(passwordEncoder);
 		
 	}
 
