@@ -7,6 +7,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Primary;
 import org.springframework.context.annotation.Scope;
 import org.springframework.context.annotation.ScopedProxyMode;
+import org.springframework.jdbc.datasource.DriverManagerDataSource;
 import org.springframework.web.context.annotation.RequestScope;
 import org.springframework.web.context.annotation.SessionScope;
 
@@ -21,9 +22,20 @@ import com.gcu.business.*;
 @Configuration
 public class SpringConfig {
 
+
+
     public SpringConfig() {
 		// TODO Auto-generated constructor stub
 	}
+
+	    @Bean
+    public DataSource dataSource() {
+        DriverManagerDataSource dataSource = new DriverManagerDataSource();
+        dataSource.setUrl("jdbc:mysql://localhost:8889/clc_milestone");
+		dataSource.setUsername("root");
+        dataSource.setPassword("root");
+        return dataSource;
+    }
 
 	@Bean(name="MedicineServiceInterface")
 	public MedicineServiceInterface getMedicineBusiness() {

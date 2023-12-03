@@ -32,7 +32,9 @@ public class UserService implements UserDetailsService, UserServiceInterface{
         this.userDetailsManager = new JdbcUserDetailsManager(dataSource);
     }
 
-    @Override
+
+
+	@Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         return userDetailsManager.loadUserByUsername(username);
     }
