@@ -27,6 +27,9 @@ public class UserService implements UserDetailsService, UserServiceInterface{
 
 
 	private final JdbcUserDetailsManager userDetailsManager;
+	
+	@Autowired
+	RegistrationsDataService service;
 
     public UserService(DataSource dataSource) {
         this.userDetailsManager = new JdbcUserDetailsManager(dataSource);
@@ -60,32 +63,12 @@ public class UserService implements UserDetailsService, UserServiceInterface{
 	@Override
 	public boolean createUser(RegisterModel model) {
 		// TODO Auto-generated method stub
-		throw new UnsupportedOperationException("Unimplemented method 'createUser'");
+		//throw new UnsupportedOperationException("Unimplemented method 'createUser'");
+		//This is where a newly registered user will add to database!
+		return service.create(model);
 	}
 
-/*
-	@Autowired
-	private UserDataAccess service;
 
-	public UserService(UserDataAccess service) {
-		// TODO Auto-generated constructor stub
-		this.service = service;
-	}
-
-	@Override
-	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-
-		LoginModel user = service.findByUsername(username);
-		if (username != null) {
-			List<GrantedAuthority> authorities = new ArrayList<GrantedAuthority>();
-			authorities.add(new SimpleGrantedAuthority("USER"));
-			return new User(user.getUsername(), user.getPassword(), authorities);
-		} else {
-
-			throw new UsernameNotFoundException("username not found");
-		}
-
-	}*/
    
 
 }

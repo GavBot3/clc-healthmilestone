@@ -34,7 +34,7 @@ public class SecurityConfig {
 		.requestMatchers("/", "/images/**", "/displayDauthCode").permitAll()
 		.anyRequest().authenticated().and()
 		.formLogin()
-		.loginPage("/login")
+		.loginPage("/home")
 		.usernameParameter("username")
 		.passwordParameter("password")
 		.permitAll()

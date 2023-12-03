@@ -8,6 +8,7 @@ import javax.sql.DataSource;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.rowset.SqlRowSet;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.gcu.model.MedicineModel;
@@ -40,6 +41,7 @@ public class RegistrationsDataService implements DataAccessInterface<RegisterMod
     public boolean create(RegisterModel t) {
         // Create SQL statement for user registration
         String sql = "INSERT INTO users(first_name, last_name, phone_number, email, username, password) VALUES (?,?,?,?,?,?)";
+        String encodedPassword = new BCryptPasswordEncoder().encode(t.getPassword());
         try {
             // Execute the SQL statement and insert user data
             int rows = jdbcTemplateObject.update(sql, 
@@ -48,7 +50,7 @@ public class RegistrationsDataService implements DataAccessInterface<RegisterMod
                     t.getPhoneNumber(),
                     t.getEmail(),
                     t.getUsername(),
-                    t.getPassword()
+                    encodedPassword
             );
             // Log the user's first name and return true if the operation was successful
             System.out.println(t.getFirstName());
