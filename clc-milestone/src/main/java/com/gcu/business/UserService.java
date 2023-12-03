@@ -37,6 +37,8 @@ public class UserService implements UserDetailsService, UserServiceInterface{
 
     public UserService(DataSource dataSource) {
         this.userDetailsManager = new JdbcUserDetailsManager(dataSource);
+		System.out.println("In userService object: " + userDetailsManager.toString());
+		System.out.println(dataSource.toString());
     }
 
 
