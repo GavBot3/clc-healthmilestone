@@ -1,5 +1,7 @@
 package com.gcu;
 
+import javax.sql.DataSource;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -74,11 +76,14 @@ public class SecurityConfig {
 
 
 	@Autowired
-	public void configure (AuthenticationManagerBuilder auth) throws Exception {
+	public void configure (AuthenticationManagerBuilder auth, DataSource datasource) throws Exception {
 		System.out.println("Configuring authentication manager");
 		PasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
-		auth.userDetailsService(service).passwordEncoder(passwordEncoder);
-
+		//auth.userDetailsService(service).passwordEncoder(passwordEncoder);
+		auth.jdbcAuthentication()
+        .dataSource(datasource)
+        .usersByUsernameQuery("select username, password FROM users")
+        .passwordEncoder(passwordEncoder);
 		
 	}
 
