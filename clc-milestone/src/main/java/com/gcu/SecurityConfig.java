@@ -24,7 +24,7 @@ public class SecurityConfig {
 	
 	@Bean
 	public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
-		http.csrf(csrf -> csrf.disable())
+		/*http.csrf(csrf -> csrf.disable())
 		.httpBasic()
 		.and()
 		.authorizeRequests()
@@ -46,8 +46,27 @@ public class SecurityConfig {
 		.clearAuthentication(true)
 		.permitAll()
 		.logoutSuccessUrl("/");
+
 	    
-		return http.build();		
+		return http.build();	*/
+				http
+			.csrf(csrf -> csrf.disable())
+			.authorizeHttpRequests(auth -> auth
+					.requestMatchers("/", "/images/**", "/service/**", "/home", "/login", "/register/**" ).permitAll()
+					.anyRequest().authenticated())
+			.formLogin(form -> form
+				.loginPage("/login")
+				.usernameParameter("username")
+				.passwordParameter("password")
+				.permitAll()
+				.defaultSuccessUrl("/dashboard", true))
+			.logout(lo -> lo
+					.logoutUrl("/logout")
+					.invalidateHttpSession(true)
+					.clearAuthentication(true)
+					.permitAll()
+					.logoutSuccessUrl("/"));
+		return http.build();	
 	}
 	
 	@Autowired
