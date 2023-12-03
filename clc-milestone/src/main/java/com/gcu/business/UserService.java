@@ -53,7 +53,10 @@ public class UserService implements UserDetailsService, UserServiceInterface{
 
 		// 	throw new UsernameNotFoundException("username not found");
 		// }
-        return userDetailsManager.loadUserByUsername(username);
+		UserDetails ud = userDetailsManager.loadUserByUsername(username);
+		System.out.println("UserDetails: " + ud.toString());
+        return ud;
+		
     }
 
 	@Override
