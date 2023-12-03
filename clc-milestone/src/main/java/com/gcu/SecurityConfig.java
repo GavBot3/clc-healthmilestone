@@ -3,6 +3,7 @@ package com.gcu;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
@@ -20,6 +21,7 @@ public class SecurityConfig {
 	@Autowired
 	private UserService service;
 	
+	PasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
 	
 	
 	@Bean
@@ -69,11 +71,22 @@ public class SecurityConfig {
 		return http.build();	
 	}
 	
+@Bean
+    public DaoAuthenticationProvider authenticationProvider() {
+        DaoAuthenticationProvider authProvider = new DaoAuthenticationProvider();
+        authProvider.setUserDetailsService(service);
+        authProvider.setPasswordEncoder(passwordEncoder);
+        return authProvider;
+    }
+
 	@Autowired
 	public void configure (AuthenticationManagerBuilder auth) throws Exception {
 		System.out.println("Configuring authentication manager");
-		PasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
-		auth.userDetailsService(service).passwordEncoder(passwordEncoder);
+		auth.userDetailsService(service).passwordEncoder(passwordEncoder)
+		.and()
+		.authenticationProvider(authenticationProvider());
 		
 	}
+
+
 }

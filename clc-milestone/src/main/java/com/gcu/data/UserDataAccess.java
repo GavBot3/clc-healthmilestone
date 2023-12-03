@@ -38,6 +38,10 @@ public class UserDataAccess implements DataAccessInterface<LoginModel>{
 		throw new UnsupportedOperationException("Unimplemented method 'findByID'");
 	}
 
+	// public UserEntity findByUsername(String username){
+
+	// }
+
 
 
 	@Override

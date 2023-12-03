@@ -32,6 +32,6 @@ public class SecurityBusinessService {
         }
         
         // Return false if no matching user is found
-        return true;
+        return false;
     }
 }
