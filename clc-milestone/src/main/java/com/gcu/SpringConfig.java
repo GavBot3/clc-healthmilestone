@@ -1,5 +1,7 @@
 package com.gcu;
 
+import javax.sql.DataSource;
+
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Primary;
@@ -30,9 +32,9 @@ public class SpringConfig {
 	}
 	
 	@Bean(name="UserServiceInterface")
-	public UserServiceInterface getUserBusiness() {
+	public UserServiceInterface getUserBusiness(DataSource dataSource) {
 		//medicine service
-		return new UserService();
+		return new UserService(dataSource);
 	}
 	
 
