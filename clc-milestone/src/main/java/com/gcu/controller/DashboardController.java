@@ -2,6 +2,7 @@
 package com.gcu.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -12,13 +13,19 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.gcu.business.DonationsService;
+import com.gcu.business.MedicineService;
+import com.gcu.business.MedicineServiceInterface;
 
 
 @Controller // This class is annotated as a Spring MVC controller
 @RequestMapping("/") // All mappings in this controller start with "/"
 public class DashboardController {
 
-    //private DonationsService service;
+	@Autowired
+    private DonationsService service;
+	@Autowired
+	@Qualifier("MedicineServiceInterface")
+	private MedicineServiceInterface medicines;
 
 
     // Handle HTTP GET requests to "/home" URL
@@ -26,6 +33,8 @@ public class DashboardController {
     public String printAct(Model model) {
         model.addAttribute("title", "Welcome To Our Health Services"); // Add a "title" attribute with a welcome message
         //call method to view
+        model.addAttribute("donations", service.getDonations());
+        model.addAttribute("medicines", medicines.getMedicines());
         return "dashboard"; // Return the name of the view, in this case, "starter" (a reference to a JSP or Thymeleaf template)
     }
 
