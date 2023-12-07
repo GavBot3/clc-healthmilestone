@@ -12,7 +12,7 @@ import jakarta.annotation.PostConstruct;
 import jakarta.annotation.PreDestroy;
 
 import com.gcu.data.*;
-
+import com.gcu.data.UserEntity;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -28,37 +28,38 @@ import org.springframework.security.core.userdetails.User;
 @Service
 public class UserService implements UserDetailsService, UserServiceInterface{
 
-
-	private final JdbcUserDetailsManager userDetailsManager;
 	
 	@Autowired
 	RegistrationsDataService service;
+	
+	@Autowired 
+	UserDataAccess dao;
 
 
     public UserService(DataSource dataSource) {
-        this.userDetailsManager = new JdbcUserDetailsManager(dataSource);
-        System.out.println("In userService object constructor: " + this.userDetailsManager.toString());
-		System.out.println(dataSource.toString());
+
     }
 
-
+    public long getUserIdFromUserDetails(UserDetails userDetails) {
+        String username = userDetails.getUsername();
+        UserEntity user = dao.findByUsername(username);
+        return user != null ? user.getId() : -1;
+    }
 
 	@Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
 
 
-		// if (username != null) {
-		// 	List<GrantedAuthority> authorities = new ArrayList<GrantedAuthority>();
-		// 	authorities.add(new SimpleGrantedAuthority("USER"));
-		// 	return new User(user.getUsername(), user.getPassword(), authorities);
-		// } else {
+		UserEntity user = dao.findByUsername(username);
+		if (username != null) {
+			List<GrantedAuthority> authorities = new ArrayList<GrantedAuthority>();
+			authorities.add(new SimpleGrantedAuthority("USER"));
+			return new User(user.getUsername(), user.getPassword(), authorities);
+		} else {
 
-		// 	throw new UsernameNotFoundException("username not found");
-		// }
-		UserDetails ud = userDetailsManager.loadUserByUsername(username);
-		System.out.println("UserDetails: " + ud.toString());
-        return ud;
-		
+			throw new UsernameNotFoundException("username not found");
+		}
+        //return userDetailsManager.loadUserByUsername(username);
     }
 
 	@Override

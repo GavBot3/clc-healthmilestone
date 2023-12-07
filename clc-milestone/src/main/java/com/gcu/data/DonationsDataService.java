@@ -50,9 +50,27 @@ public class DonationsDataService implements DataAccessInterface<DonationsModel>
 
     // Find a donation by its ID (Not yet implemented)
     @Override
-    public DonationsModel findByID(int id) {
+    public List<DonationsModel> findByID(int id) {
         // TODO Auto-generated method stub
-        return null;
+    	System.out.print(id);
+    	String sql = "SELECT * FROM donations WHERE user_ID = ?";
+        List<DonationsModel> donations = new ArrayList<DonationsModel>();
+
+    	try {
+            // Execute the SQL query and retrieve a result set
+            SqlRowSet srs = jdbcTemplateObject.queryForRowSet(sql, id);
+            while (srs.next()) {
+                // Create DonationsModel objects and add them to the donations list
+                donations.add(new DonationsModel(
+                    srs.getInt("ID"),
+                    srs.getString("organ"),
+                    srs.getString("donation_date"),
+                    srs.getInt("user_ID")));
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return donations;
     }
 
     // Create a new donation

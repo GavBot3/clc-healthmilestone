@@ -1,7 +1,5 @@
 package com.gcu;
 
-import javax.sql.DataSource;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -23,36 +21,11 @@ public class SecurityConfig {
 	@Autowired
 	private UserService service;
 	
-	
+	PasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
 	
 	
 	@Bean
 	public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
-		/*http.csrf(csrf -> csrf.disable())
-		.httpBasic()
-		.and()
-		.authorizeRequests()
-		.requestMatchers("/service/**").authenticated()
-		.and()
-		.authorizeRequests()
-		.requestMatchers("/", "/images/**", "/displayDauthCode", "/home", "/login", "/register/**").permitAll()
-		.anyRequest().authenticated().and()
-		.formLogin()
-		.loginPage("/login")
-		.usernameParameter("username")
-		.passwordParameter("password")
-		.permitAll()
-		.defaultSuccessUrl("/dashboard", true)
-		.and()
-		.logout()
-		.logoutUrl("/logout")
-		.invalidateHttpSession(true)
-		.clearAuthentication(true)
-		.permitAll()
-		.logoutSuccessUrl("/");
-
-	    
-		return http.build();	*/
 				http
 			.csrf(csrf -> csrf.disable())
 			.authorizeHttpRequests(auth -> auth
@@ -74,16 +47,10 @@ public class SecurityConfig {
 	}
 	
 
-
 	@Autowired
-	public void configure (AuthenticationManagerBuilder auth, DataSource datasource) throws Exception {
+	public void configure (AuthenticationManagerBuilder auth) throws Exception {
 		System.out.println("Configuring authentication manager");
-		PasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
-		//auth.userDetailsService(service).passwordEncoder(passwordEncoder);
-		auth.jdbcAuthentication()
-        .dataSource(datasource)
-        .usersByUsernameQuery("select username, password, 1 as enabled FROM users WHERE username =?")
-        .passwordEncoder(passwordEncoder);
+		auth.userDetailsService(service).passwordEncoder(passwordEncoder);
 		
 	}
 

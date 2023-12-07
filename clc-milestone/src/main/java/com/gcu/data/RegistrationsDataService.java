@@ -31,7 +31,7 @@ public class RegistrationsDataService implements DataAccessInterface<RegisterMod
 
     // Find a user by their ID (Not yet implemented)
     @Override
-    public RegisterModel findByID(int id) {
+    public List<RegisterModel> findByID(int id) {
         // TODO Auto-generated method stub
         return null;
     }

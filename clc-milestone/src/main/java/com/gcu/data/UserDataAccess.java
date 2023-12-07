@@ -37,7 +37,7 @@ public class UserDataAccess implements DataAccessInterface<LoginModel>{
 
 
 	@Override
-	public LoginModel findByID(int id) {
+	public List<LoginModel> findByID(int id) {
 		// TODO Auto-generated method stub
 		throw new UnsupportedOperationException("Unimplemented method 'findByID'");
 	}

@@ -53,7 +53,7 @@ public class MedicineDataService<T> implements DataAccessInterface<MedicineModel
     }
 
     @Override
-    public MedicineModel findByID(int id) {
+    public List<MedicineModel> findByID(int id) {
         // TODO Auto-generated method stub
         return null;
     }

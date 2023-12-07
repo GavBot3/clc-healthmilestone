@@ -8,6 +8,8 @@ import org.springframework.context.annotation.Primary;
 import org.springframework.context.annotation.Scope;
 import org.springframework.context.annotation.ScopedProxyMode;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.context.annotation.RequestScope;
 import org.springframework.web.context.annotation.SessionScope;
 
@@ -50,7 +52,10 @@ public class SpringConfig {
 	}
 	
 
-	
+	@Bean
+    public PasswordEncoder passwordEncoder() {
+        return new BCryptPasswordEncoder();
+    }
 	
 	@Bean
     public LoginModel loginModel() {
