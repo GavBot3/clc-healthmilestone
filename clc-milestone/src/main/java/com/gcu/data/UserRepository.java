@@ -14,9 +14,6 @@ public interface UserRepository extends CrudRepository<UserEntity, Long>{
 
     @Query("SELECT u FROM UserEntity u WHERE u.username = :username")
     UserEntity findByUsername(@Param("username") String username);
-<<<<<<< Updated upstream
-=======
     
     
->>>>>>> Stashed changes
 }

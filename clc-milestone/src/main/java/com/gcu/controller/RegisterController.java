@@ -51,7 +51,7 @@ public class RegisterController {
 		//TODO: Create new user with vaild info
 		if(service.createUser(registerModel)) {
 			System.out.println("TRUE");
-			return "dashboard";
+			return "login";
 		}
 		
 	
