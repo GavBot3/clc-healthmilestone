@@ -35,7 +35,6 @@ public class APIController {
 	
 	//API path to get all users donations
 	@GetMapping(path="/getdonations", produces= {MediaType.APPLICATION_JSON_VALUE})
-
 	public List<DonationsModel> getDonations(){
 		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
 		System.out.println("GET HERE?");
@@ -90,6 +89,7 @@ public class APIController {
 	}
 	
 	
+	
 	@GetMapping(path = "/getMedicines", produces= {MediaType.APPLICATION_JSON_VALUE})
 	public ResponseEntity<?> getMedicines() {
 		try {
@@ -107,4 +107,7 @@ public class APIController {
 			return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 	}
+	
+	
+	
 }
