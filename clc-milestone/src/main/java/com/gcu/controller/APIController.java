@@ -15,11 +15,11 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-
+import com.gcu.business.MedicineService;
 import com.gcu.business.UserService;
 import com.gcu.data.DonationsDataService;
 import com.gcu.model.DonationsModel;
-
+import com.gcu.model.MedicineModel;
 
 
 @RestController
@@ -30,8 +30,11 @@ public class APIController {
 	private DonationsDataService service;
 	@Autowired
 	private UserService userService;
+	@Autowired
+	private MedicineService medicineService;
+	
 	//API path to get all users donations
-	@GetMapping(path="/getdonation", produces= {MediaType.APPLICATION_JSON_VALUE})
+	@GetMapping(path="/getdonations", produces= {MediaType.APPLICATION_JSON_VALUE})
 
 	public List<DonationsModel> getDonations(){
 		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
@@ -53,7 +56,7 @@ public class APIController {
 		
 	
 	//API path to get specific donation
-	@GetMapping(path="/getdonation/{id}")
+	@GetMapping(path="/getDonation/{id}")
 	public ResponseEntity<?> getDonationById(@PathVariable("id") int donationId){
 		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
 
@@ -78,11 +81,30 @@ public class APIController {
 						return new ResponseEntity<>(dm, HttpStatus.OK);
 					}
 				}
-			}catch(Exception e) {
+			} catch(Exception e) {
 				e.printStackTrace();
 			}
 		}
 		return null;
 		
+	}
+	
+	
+	@GetMapping(path = "/getMedicines", produces= {MediaType.APPLICATION_JSON_VALUE})
+	public ResponseEntity<?> getMedicines() {
+		try {
+
+			List<MedicineModel> medicines = medicineService.getMedicines();
+			if (medicines.isEmpty())
+				return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+
+			else
+				return new ResponseEntity<>(medicines, HttpStatus.OK);
+		}
+
+		catch (Exception e) {
+
+			return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+		}
 	}
 }
