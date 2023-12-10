@@ -5,7 +5,7 @@
 <head>
 	<meta charset="UTF-8">
 	<title>updateDonation</title>
-	<!-- Include Bootstrap 5 CSS -->
+	<!-- Include Bootstrap 5 CSS -->"src/main/resources/templates/updateDonation.html"
 	<link th:href="@{/css/donation.css}" rel="stylesheet" />
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" />
 
@@ -21,11 +21,10 @@
 			<h2 align="center">(Enter the ID as the item to be updated)</h2>
 			<!-- Display all donations in a bordered box -->
 			<div class="center-box">
-				<table align="center">
+				<table class="table table-hover" align="center">
 					<td>Donation ID</td>
 					<td>Organ</td>
 					<td>Donation Date</th>
-					<td>User_ID</td>
 					</th>
 					<!-- Iterate over the donationList using Thymeleaf loop -->
 					<tr th:each="donation : ${donationList}">

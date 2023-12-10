@@ -34,10 +34,10 @@ public class SecurityConfig {
 		http
 				.csrf(csrf -> csrf.disable())
 				.authorizeHttpRequests(auth -> auth
-						.requestMatchers("/", "/images/**", "/service/**", "/home", "/login", "/register/**",
+						.requestMatchers("/", "/images/**", "/service/**","/home", "/login", "/register/**",
 								"/loginsubmit", "/registersubmit")
 						.permitAll()
-						// .requestMatchers("/service/getdonation").authenticated()
+						//.requestMatchers("/service/**").authenticated()
 						.anyRequest().authenticated())
 				.formLogin(form -> form
 						.loginPage("/login")
@@ -65,20 +65,20 @@ public class SecurityConfig {
 	private String clientSecert = "498fece8b66b36a0dda8369e07f71b491e4737bd";
 	private String redirectUri = "http://localhost:8080/login/oauth2/code/github";
 
-	@Bean
-	public ClientRegistrationRepository clientRegistrationRepository() {
-		ClientRegistration registration = ClientRegistration.withRegistrationId("github")
-				.clientId(clientId)
-				.clientSecret(clientSecert)
-				.redirectUri(redirectUri)
-				.authorizationUri("https://github.com/login/oauth/authorize")
-				.tokenUri("https://github.com/login/oauth/access_token")
-				.userInfoUri("https://api.github.com/user")
-				.userNameAttributeName("id")
-				.clientName("GitHub")
-				.clientAuthenticationMethod(ClientAuthenticationMethod.CLIENT_SECRET_BASIC)
-				.authorizationGrantType(AuthorizationGrantType.AUTHORIZATION_CODE).build();
-		return new InMemoryClientRegistrationRepository(registration);
-	}
+//	@Bean
+//	public ClientRegistrationRepository clientRegistrationRepository() {
+//		ClientRegistration registration = ClientRegistration.withRegistrationId("github")
+//				.clientId(clientId)
+//				.clientSecret(clientSecert)
+//				.redirectUri(redirectUri)
+//				.authorizationUri("https://github.com/login/oauth/authorize")
+//				.tokenUri("https://github.com/login/oauth/access_token")
+//				.userInfoUri("https://api.github.com/user")
+//				.userNameAttributeName("id")
+//				.clientName("GitHub")
+//				.clientAuthenticationMethod(ClientAuthenticationMethod.CLIENT_SECRET_BASIC)
+//				.authorizationGrantType(AuthorizationGrantType.AUTHORIZATION_CODE).build();
+//		return new InMemoryClientRegistrationRepository(registration);
+//	}
 
 }
