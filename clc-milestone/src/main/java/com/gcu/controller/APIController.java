@@ -34,7 +34,7 @@ public class APIController {
 	private MedicineService medicineService;
 	
 	//API path to get all users donations
-	@GetMapping(path="/getdonations", produces= {MediaType.APPLICATION_JSON_VALUE})
+	@GetMapping(path="/getdonation", produces= {MediaType.APPLICATION_JSON_VALUE})
 	public List<DonationsModel> getDonations(){
 		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
 		System.out.println("GET HERE?");
@@ -55,7 +55,7 @@ public class APIController {
 		
 	
 	//API path to get specific donation
-	@GetMapping(path="/getDonation/{id}")
+	@GetMapping(path="/getdonation/{id}")
 	public ResponseEntity<?> getDonationById(@PathVariable("id") int donationId){
 		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
 
