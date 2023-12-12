@@ -75,6 +75,8 @@
 
 		
 				<button type="submit" class="btn btn-primary" value="Submit">Submit</button>
+							<div>Have an account already? <a th:href="@{/login}">Login here</a></div>
+				
 				<div class="mb-3">
 					<label th:if="${#fields.hasErrors('*')}">List of Errors</label>
 					<!-- Iterate through and display individual field errors -->

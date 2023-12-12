@@ -29,7 +29,7 @@ public class SecurityConfig {
 		http
 				.csrf(csrf -> csrf.disable())
 				.authorizeHttpRequests(auth -> auth
-						.requestMatchers("/", "/images/**","/home", "/login", "/register/**",
+						.requestMatchers("/","/css/**", "/images/**","/home", "/login", "/register/**",
 								"/loginsubmit", "/registersubmit")
 						.permitAll()
 						//.requestMatchers("/service/**").authenticated()
@@ -45,7 +45,7 @@ public class SecurityConfig {
 						.invalidateHttpSession(true)
 						.clearAuthentication(true)
 						.permitAll()
-						.logoutSuccessUrl("/"));
+						.logoutSuccessUrl("/logout"));
 		return http.build();
 	}
 
@@ -54,6 +54,14 @@ public class SecurityConfig {
 		System.out.println("Configuring authentication manager");
 		auth.userDetailsService(service).passwordEncoder(passwordEncoder);
 
+	}
+	
+	@Bean
+	public DaoAuthenticationProvider authenticationProvider(UserService userService) {
+	    DaoAuthenticationProvider authProvider = new DaoAuthenticationProvider();
+	    authProvider.setUserDetailsService(userService);
+	    authProvider.setPasswordEncoder(passwordEncoder);
+	    return authProvider;
 	}
 
 

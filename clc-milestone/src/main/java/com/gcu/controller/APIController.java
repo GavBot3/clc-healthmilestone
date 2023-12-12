@@ -55,7 +55,7 @@ public class APIController {
 		
 	
 	//API path to get specific donation
-	@GetMapping(path="/getDonation/{id}")
+	@GetMapping(path="/getdonation/{id}" , produces= {MediaType.APPLICATION_JSON_VALUE})
 	public ResponseEntity<?> getDonationById(@PathVariable("id") int donationId){
 		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
 

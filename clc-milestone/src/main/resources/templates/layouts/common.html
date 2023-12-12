@@ -1,66 +1,66 @@
 <!DOCTYPE html>
 <html xmlns:th="https://www.thymeleaf.org"
-	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
 <head>
 <meta charset="UTF-8">
 
 </head>
 <body>
-  <!-- Header section -->
+	<!-- Header section -->
 	<div th:fragment="header">
 
-  		
-    <!-- Start of the bootstrap nav bar -->
-        <nav class="navbar navbar-expand-lg navbar-light bg-light">
-            <div class="container-fluid">
-              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-              </button>
-              <div class="collapse navbar-collapse" id="navbarNavDropdown">
-                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                  <!-- Home page -->
-                  <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" th:href="@{/home}">Home</a>
-                  </li>
-                  <!-- Scheduling page -->
-                  <li class="nav-item">
-                    <a class="nav-link" th:href="@{/schedule}">Schedule</a>
-                  </li>
-                  <!-- Medicine page -->
-                  <li class="nav-item">
-                    <a class="nav-link" th:href="@{/medicines}">Buy Medicine</a>
-                  </li>
-                  <!-- Donation page -->
-                  <li class="nav-item">
-                    <a class="nav-link" th:href="@{/donations}">Donate</a>
-                  </li>
-                  <!-- Dashboard page -->
-                  <li class="nav-item">
-                    <a class="nav-link" th:href="@{/dashboard}">Dashboard</a>
-                  </li>
-                  <li class="nav-item">
-					  <a class="nav-link" th:href="@{/logout}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Logout</a>
-						<form id="logout-form" action="/logout" method="post" style="display: none;">
-    					<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
-    </li>
-               	
-</form>
-                </ul>             
-              </div>
-               <!-- Search bar in the nav bar -->
-              <div class="nav-search">
-                    <form class="d-flex" >
-                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                    <button class="btn btn-outline-success" type="submit">Search</button>
-                    </form>
-              </div>
-            </div>
-          </nav>
-		
+
+		<!-- Start of the bootstrap nav bar -->
+		<nav class="navbar navbar-expand-lg navbar-light bg-light">
+			<div class="container-fluid">
+				<button class="navbar-toggler" type="button"
+					data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"
+					aria-controls="navbarNavDropdown" aria-expanded="false"
+					aria-label="Toggle navigation">
+					<span class="navbar-toggler-icon"></span>
+				</button>
+				<div class="collapse navbar-collapse" id="navbarNavDropdown">
+					<ul class="navbar-nav me-auto mb-2 mb-lg-0">
+						<!-- Home page -->
+						<li class="nav-item"><a class="nav-link active"
+							aria-current="page" th:href="@{/home}">Home</a></li>
+						<!-- Scheduling page -->
+						<li class="nav-item"><a class="nav-link"
+							th:href="@{/schedule}">Schedule</a></li>
+						<!-- Medicine page -->
+						<li class="nav-item"><a class="nav-link"
+							th:href="@{/medicines}">Buy Medicine</a></li>
+						<!-- Donation page -->
+						<li class="nav-item"><a class="nav-link"
+							th:href="@{/donations}">Donate</a></li>
+						<!-- Dashboard page -->
+						<li class="nav-item"><a class="nav-link"
+							th:href="@{/dashboard}">Dashboard</a></li>
+					</ul>
+					<div sec:authorize="!isAuthenticated()">
+						<form th:action="@{/login}" method="get">
+							<button type="submit" class="btn btn-success"
+								style="margin-right: 10px">Login</button>
+						</form>
+					</div>
+					<div sec:authorize="isAuthenticated()">
+						<a class="btn btn-danger" th:href="@{/logout}"
+							onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Logout</a>
+						<form id="logout-form" action="/logout" method="post"
+							style="display: none;">
+							<input type="hidden" name="${_csrf.parameterName}"
+								value="${_csrf.token}" />
+						</form>
+					</div>
+				</div>
+
+			</div>
+		</nav>
+
 	</div>
 
-<!-- footer section -->
-	<div th:fragment="footer">
-	</div>
+	<!-- footer section -->
+	<div th:fragment="footer"></div>
 </body>
 </html>
