@@ -34,7 +34,7 @@ public class APIController {
 	private MedicineService medicineService;
 	
 	//API path to get all users donations
-	@GetMapping(path="/getdonations", produces= {MediaType.APPLICATION_JSON_VALUE})
+	@GetMapping(path="/getdonation", produces= {MediaType.APPLICATION_JSON_VALUE})
 	public List<DonationsModel> getDonations(){
 		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
 		System.out.println("GET HERE?");
